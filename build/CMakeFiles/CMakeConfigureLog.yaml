@@ -1,0 +1,203 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: D:/my_data/opengl/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+      
+      The C compiler identification is GNU, found in:
+        D:/my_data/studio/build/CMakeFiles/3.30.4/CompilerIdC/a.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/my_data/opengl/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/my_data/studio/build/CMakeFiles/3.30.4/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-t8fozw"
+      binary: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-t8fozw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-t8fozw'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 D:/my_data/opengl/mingw/bin/make.exe -f Makefile cmTC_c9937/fast
+        D:/my_data/opengl/mingw/bin/make.exe  -f CMakeFiles/cmTC_c9937.dir/build.make CMakeFiles/cmTC_c9937.dir/build
+        make.exe[1]: Entering directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-t8fozw'
+        Building C object CMakeFiles/cmTC_c9937.dir/CMakeCCompilerABI.c.obj
+        D:/my_data/opengl/mingw/bin/gcc.exe   -v -o CMakeFiles/cmTC_c9937.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c"
+        gcc.exe: error: C:/Program: No such file or directory
+        gcc.exe: error: Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c: No such file or directory
+        Using built-in specs.
+        COLLECT_GCC=d:\\my_data\\opengl\\mingw\\bin\\gcc.exe
+        Target: mingw32
+        Configured with: ../src/gcc-6.3.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --with-gmp=/mingw --with-mpfr --with-mpc=/mingw --with-isl=/mingw --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-6.3.0-1' --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --enable-libgomp --disable-libvtv --enable-nls
+        Thread model: win32
+        gcc version 6.3.0 (MinGW.org GCC-6.3.0-1) 
+        Linking C executable cmTC_c9937.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_c9937.dir/objects.a
+        D:/my_data/opengl/mingw/bin/ar.exe qc CMakeFiles/cmTC_c9937.dir/objects.a @CMakeFiles/cmTC_c9937.dir/objects1.rsp
+        D:/my_data/opengl/mingw/bin/ar.exe: CMakeFiles/cmTC_c9937.dir/CMakeCCompilerABI.c.obj: No such file or directory
+        CMakeFiles/cmTC_c9937.dir/build.make:98: recipe for target 'cmTC_c9937.exe' failed
+        make.exe[1]: *** [cmTC_c9937.exe] Error 1
+        make.exe[1]: Leaving directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-t8fozw'
+        Makefile:127: recipe for target 'cmTC_c9937/fast' failed
+        make.exe: *** [cmTC_c9937/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working C compiler: D:/my_data/opengl/mingw/bin/gcc.exe"
+    directories:
+      source: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p"
+      binary: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 D:/my_data/opengl/mingw/bin/make.exe -f Makefile cmTC_67db0/fast
+        D:/my_data/opengl/mingw/bin/make.exe  -f CMakeFiles/cmTC_67db0.dir/build.make CMakeFiles/cmTC_67db0.dir/build
+        make.exe[1]: Entering directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p'
+        Building C object CMakeFiles/cmTC_67db0.dir/testCCompiler.c.obj
+        D:/my_data/opengl/mingw/bin/gcc.exe    -o CMakeFiles/cmTC_67db0.dir/testCCompiler.c.obj -c D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p/testCCompiler.c
+        Linking C executable cmTC_67db0.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_67db0.dir/objects.a
+        D:/my_data/opengl/mingw/bin/ar.exe qc CMakeFiles/cmTC_67db0.dir/objects.a @CMakeFiles/cmTC_67db0.dir/objects1.rsp
+        D:/my_data/opengl/mingw/bin/gcc.exe -Wl,--whole-archive CMakeFiles/cmTC_67db0.dir/objects.a -Wl,--no-whole-archive -o cmTC_67db0.exe -Wl,--out-implib,libcmTC_67db0.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_67db0.dir/linkLibs.rsp
+        make.exe[1]: Leaving directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-1a2z7p'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-h2kly3"
+      binary: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-h2kly3"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-h2kly3'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 D:/my_data/opengl/mingw/bin/make.exe -f Makefile cmTC_b0535/fast
+        D:/my_data/opengl/mingw/bin/make.exe  -f CMakeFiles/cmTC_b0535.dir/build.make CMakeFiles/cmTC_b0535.dir/build
+        make.exe[1]: Entering directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-h2kly3'
+        Building CXX object CMakeFiles/cmTC_b0535.dir/CMakeCXXCompilerABI.cpp.obj
+        D:/my_data/opengl/mingw/bin/g++.exe   -v -o CMakeFiles/cmTC_b0535.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
+        g++.exe: error: C:/Program: No such file or directory
+        g++.exe: error: Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp: No such file or directory
+        Using built-in specs.
+        COLLECT_GCC=d:\\my_data\\opengl\\mingw\\bin\\g++.exe
+        Target: mingw32
+        Configured with: ../src/gcc-6.3.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --with-isl=/mingw --prefix=/mingw --disable-win32-registry --target=mingw32 --with-arch=i586 --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-6.3.0-1' --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-tune=generic --enable-libgomp --disable-libvtv --enable-nls
+        Thread model: win32
+        gcc version 6.3.0 (MinGW.org GCC-6.3.0-1) 
+        Linking CXX executable cmTC_b0535.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_b0535.dir/objects.a
+        D:/my_data/opengl/mingw/bin/ar.exe qc CMakeFiles/cmTC_b0535.dir/objects.a @CMakeFiles/cmTC_b0535.dir/objects1.rsp
+        D:/my_data/opengl/mingw/bin/ar.exe: CMakeFiles/cmTC_b0535.dir/CMakeCXXCompilerABI.cpp.obj: No such file or directory
+        CMakeFiles/cmTC_b0535.dir/build.make:98: recipe for target 'cmTC_b0535.exe' failed
+        make.exe[1]: *** [cmTC_b0535.exe] Error 1
+        make.exe[1]: Leaving directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-h2kly3'
+        Makefile:127: recipe for target 'cmTC_b0535/fast' failed
+        make.exe: *** [cmTC_b0535/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/my_data/opengl/mingw/bin/g++.exe"
+    directories:
+      source: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3"
+      binary: "D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 D:/my_data/opengl/mingw/bin/make.exe -f Makefile cmTC_768c1/fast
+        D:/my_data/opengl/mingw/bin/make.exe  -f CMakeFiles/cmTC_768c1.dir/build.make CMakeFiles/cmTC_768c1.dir/build
+        make.exe[1]: Entering directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3'
+        Building CXX object CMakeFiles/cmTC_768c1.dir/testCXXCompiler.cxx.obj
+        D:/my_data/opengl/mingw/bin/g++.exe    -o CMakeFiles/cmTC_768c1.dir/testCXXCompiler.cxx.obj -c D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3/testCXXCompiler.cxx
+        Linking CXX executable cmTC_768c1.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_768c1.dir/objects.a
+        D:/my_data/opengl/mingw/bin/ar.exe qc CMakeFiles/cmTC_768c1.dir/objects.a @CMakeFiles/cmTC_768c1.dir/objects1.rsp
+        D:/my_data/opengl/mingw/bin/g++.exe -Wl,--whole-archive CMakeFiles/cmTC_768c1.dir/objects.a -Wl,--no-whole-archive -o cmTC_768c1.exe -Wl,--out-implib,libcmTC_768c1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_768c1.dir/linkLibs.rsp
+        make.exe[1]: Leaving directory 'D:/my_data/studio/build/CMakeFiles/CMakeScratch/TryCompile-ffanp3'
+        
+      exitCode: 0
+...
