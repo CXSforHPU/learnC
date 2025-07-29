@@ -1,8 +1,8 @@
 [
 {
   "directory": "D:/my_data/studio/build",
-  "command": "D:/my_data/opengl/mingw/bin/g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles/main.dir/src/main.cpp.obj -c D:/my_data/studio/src/main.cpp",
-  "file": "D:/my_data/studio/src/main.cpp",
-  "output": "CMakeFiles/main.dir/src/main.cpp.obj"
+  "command": "D:/my_data/opengl/mingw/bin/gcc.exe  @CMakeFiles/main.dir/includes_C.rsp -g -o CMakeFiles/main.dir/src/main.c.obj -c D:/my_data/studio/src/main.c",
+  "file": "D:/my_data/studio/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.c.obj"
 }
 ]
