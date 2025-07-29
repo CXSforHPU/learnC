@@ -84,18 +84,35 @@ CMakeFiles/main.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/main.c.s"
 	D:/my_data/opengl/mingw/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:/my_data/studio/src/main.c -o CMakeFiles/main.dir/src/main.c.s
 
+CMakeFiles/main.dir/src/tools.c.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/tools.c.obj: CMakeFiles/main.dir/includes_C.rsp
+CMakeFiles/main.dir/src/tools.c.obj: D:/my_data/studio/src/tools.c
+CMakeFiles/main.dir/src/tools.c.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:/my_data/studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/tools.c.obj"
+	D:/my_data/opengl/mingw/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/tools.c.obj -MF CMakeFiles/main.dir/src/tools.c.obj.d -o CMakeFiles/main.dir/src/tools.c.obj -c D:/my_data/studio/src/tools.c
+
+CMakeFiles/main.dir/src/tools.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/tools.c.i"
+	D:/my_data/opengl/mingw/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:/my_data/studio/src/tools.c > CMakeFiles/main.dir/src/tools.c.i
+
+CMakeFiles/main.dir/src/tools.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/tools.c.s"
+	D:/my_data/opengl/mingw/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:/my_data/studio/src/tools.c -o CMakeFiles/main.dir/src/tools.c.s
+
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/main.c.obj"
+"CMakeFiles/main.dir/src/main.c.obj" \
+"CMakeFiles/main.dir/src/tools.c.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 bin/main.exe: CMakeFiles/main.dir/src/main.c.obj
+bin/main.exe: CMakeFiles/main.dir/src/tools.c.obj
 bin/main.exe: CMakeFiles/main.dir/build.make
 bin/main.exe: CMakeFiles/main.dir/linkLibs.rsp
 bin/main.exe: CMakeFiles/main.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:/my_data/studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable bin/main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:/my_data/studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable bin/main.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/main.dir/objects.a
 	D:/my_data/opengl/mingw/bin/ar.exe qc CMakeFiles/main.dir/objects.a @CMakeFiles/main.dir/objects1.rsp
 	D:/my_data/opengl/mingw/bin/gcc.exe -g -Wl,--whole-archive CMakeFiles/main.dir/objects.a -Wl,--no-whole-archive -o bin/main.exe -Wl,--out-implib,bin/libmain.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/main.dir/linkLibs.rsp
