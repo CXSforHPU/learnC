@@ -1,1 +1,5 @@
+# 忽略 build 目录
 build/
+
+# 忽略 VS Code 配置目录
+.vscode/
