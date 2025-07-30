@@ -1,5 +1,5 @@
-#include "stdio.h"
 #include "tools.h"
+#include "math.h"
 int main()
 {
     //输出

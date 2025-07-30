@@ -24,6 +24,9 @@ int compare(int num1, int num2)
     return num1 >= num2 ? num1 :num2;
 }
 
+/*
+@brief 检测输入以及比较大小后输出
+*/
 void use_scanf()
 {
     int a = 0;
