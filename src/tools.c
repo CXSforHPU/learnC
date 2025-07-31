@@ -2,8 +2,8 @@
 
 /*
 @brief 求和
-@param num1 数字1
-@param num2 数字2
+@param int num1 数字1
+@param int num2 数字2
 @return 返回和
 */
 int sum(int num1, int num2)
@@ -15,13 +15,13 @@ int sum(int num1, int num2)
 
 /*
 @brief 获取两个数字中的最大值
-@param num1 数字1
-@param num2 数字2
+@param int num1 数字1
+@param int num2 数字2
 @return 返回两个数字中的最大值
 */
 int compare(int num1, int num2)
 {
-    return num1 >= num2 ? num1 :num2;
+    return num1 >= num2 ? num1 : num2;
 }
 
 /*
@@ -33,22 +33,22 @@ void use_scanf()
     int b = 0;
     int max = 0;
     scanf("%d %d", &a, &b);
-    printf("a=%d, b=%d\n",a,b);
-    
-    max = compare(a,b);
-    printf("max=%d\n",max);
+    printf("a=%d, b=%d\n", a, b);
+
+    max = compare(a, b);
+    printf("max=%d\n", max);
 }
 
 /*
 @brief 阶乘函数
-@param num
+@param int num
 @return 阶乘结果
 */
 int factorial(int num)
 {
     int result = 1;
 
-    if(num <= 0)
+    if (num <= 0)
     {
         return -1;
     }
@@ -59,5 +59,53 @@ int factorial(int num)
     }
 
     return result;
-
 }
+
+/*
+@brief 获取函数值
+1-1/2+1/3 + 1/(n+1)*(-1)^n
+@param n 数列的项数
+@return 数列求和
+*/
+double get_value(int n)
+{
+    int sign = 1.0;
+    double result = 0.0;
+
+    if (n <= 0)
+    {
+        return -1.0;
+    }
+
+    for (double i = 1; i <= n; i++)
+    {
+        result += (1.0 / i) * sign;
+        sign *= -1;
+    }
+    return result;
+}
+
+/*
+@brief 判断是否是素数
+@param int num 素数
+@return 是不是素数
+*/
+my_bool is_prime(int num)
+{
+    int target = (int)sqrt((double)num);
+    if (num <= 1)
+    {
+        return FALSE;
+    }
+
+    for (int i = 2 ; i <= target ; i++)
+    {
+        if (num % i == 0)
+        {
+            return FALSE;
+        }
+    }
+    
+    return TRUE;
+}
+
