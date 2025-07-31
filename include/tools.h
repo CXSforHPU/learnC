@@ -4,6 +4,9 @@
 #include "stdio.h"
 #include "math.h"
 #include "my_type.h"
+#include "config.h"
+#include "stdlib.h"
+
 
 int sum(int num1, int num2);
 int compare(int num1, int num2);

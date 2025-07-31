@@ -1,5 +1,4 @@
 #include "tools.h"
-#include "config.h"
 int main()
 {
 
@@ -35,6 +34,8 @@ int main()
     // 测试素数
     printf("is_prime(13) = %d\n", is_prime(13));
 #endif
+
+    system("pause");
 
     return 0;
 }
