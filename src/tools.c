@@ -38,3 +38,26 @@ void use_scanf()
     max = compare(a,b);
     printf("max=%d\n",max);
 }
+
+/*
+@brief 阶乘函数
+@param num
+@return 阶乘结果
+*/
+int factorial(int num)
+{
+    int result = 1;
+
+    if(num <= 0)
+    {
+        return -1;
+    }
+
+    for (int i = num; i > 0; i--)
+    {
+        result *= i;
+    }
+
+    return result;
+
+}

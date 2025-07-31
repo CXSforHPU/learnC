@@ -1,0 +1,6 @@
+#define SUM_EXAMPLE
+#define COMPARE_EXAMPLE
+#define USE_SCANF_EXAMPLE
+#define FACTORIAL_EXAMPLE
+
+
