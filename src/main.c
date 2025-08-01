@@ -35,6 +35,15 @@ int main()
     printf("is_prime(13) = %d\n", is_prime(13));
 #endif
 
+#ifdef FAHRENHEIT_TO_CELSIUS_EXAMPLE
+    // 测试华氏温度转摄氏温度
+    printf("fahrenheit_to_celsius(100) = %f\n", fahrenheit_to_celsius(100.0f));
+#endif
+
+#ifdef TEST_ESCAPE_CHARACTERS_EXAMPLE
+    // 测试转义字符
+    test_escape_characters();
+#endif
     system("pause");
 
     return 0;

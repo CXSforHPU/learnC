@@ -109,3 +109,54 @@ my_bool is_prime(int num)
     return TRUE;
 }
 
+/*
+@brief 华氏温度转换摄氏温度
+@param float fahrenheit 华氏温度
+@reture 摄氏温度
+*/
+float fahrenheit_to_celsius(float fahrenheit)
+{
+    return (fahrenheit - 32.0f) * 5.0f / 9.0f;
+}
+
+/*
+@brief 测试转义字符的使用
+*/
+void test_escape_characters()
+{
+#ifdef _WIN32
+    // 设置控制台代码页为UTF-8
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+
+    // 测试换行符 \n
+    printf("这是第一行\n这是第二行\n");
+    
+    // 测试制表符 \t
+    printf("姓名\t年龄\t城市\n");
+    printf("张三\t25\t北京\n");
+    
+    // 测试反斜杠本身
+    printf("路径: C:\\Program Files\\MyApp\\\n");
+    
+    // 测试双引号 \"
+    printf("他说: \"Hello World\"\n");
+    
+    // 测试单引号 \'
+    printf("字符 \'A\' 的ASCII码是 %d\n", 'A');
+    
+    // 测试回车和换行 \r\n (Windows风格)
+    printf("第一行\r\n第二行\r\n");
+    
+    // 测试响铃字符 \a
+    printf("响铃测试: \a请看这里!\n");
+    
+    // 测试退格字符 \b
+    printf("测试退格: ABCD\b\b\b\b1234\n");
+    
+    // 测试八进制转义字符
+    printf("八进制101表示字符: \101\n");
+    
+    // 测试十六进制转义字符
+    printf("十六进制41表示字符: \x41\n");
+}
