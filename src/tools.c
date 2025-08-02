@@ -98,14 +98,14 @@ my_bool is_prime(int num)
         return FALSE;
     }
 
-    for (int i = 2 ; i <= target ; i++)
+    for (int i = 2; i <= target; i++)
     {
         if (num % i == 0)
         {
             return FALSE;
         }
     }
-    
+
     return TRUE;
 }
 
@@ -124,39 +124,72 @@ float fahrenheit_to_celsius(float fahrenheit)
 */
 void test_escape_characters()
 {
-#ifdef _WIN32
-    // 设置控制台代码页为UTF-8
-    SetConsoleOutputCP(CP_UTF8);
-#endif
-
     // 测试换行符 \n
     printf("这是第一行\n这是第二行\n");
-    
+
     // 测试制表符 \t
     printf("姓名\t年龄\t城市\n");
     printf("张三\t25\t北京\n");
-    
+
     // 测试反斜杠本身
     printf("路径: C:\\Program Files\\MyApp\\\n");
-    
+
     // 测试双引号 \"
     printf("他说: \"Hello World\"\n");
-    
+
     // 测试单引号 \'
     printf("字符 \'A\' 的ASCII码是 %d\n", 'A');
-    
+
     // 测试回车和换行 \r\n (Windows风格)
     printf("第一行\r\n第二行\r\n");
-    
+
     // 测试响铃字符 \a
     printf("响铃测试: \a请看这里!\n");
-    
+
     // 测试退格字符 \b
     printf("测试退格: ABCD\b\b\b\b1234\n");
-    
+
     // 测试八进制转义字符
     printf("八进制101表示字符: \101\n");
-    
+
     // 测试十六进制转义字符
     printf("十六进制41表示字符: \x41\n");
+}
+
+/*
+@brief 大写字母转小写字母 仅仅针对字符 非字符串
+*/
+void test_upper_to_lower(char *ch)
+{
+
+    if (*ch >= 65 && *ch <= 90) // A - 65； Z - 90
+    {
+        *ch = *ch + 32;
+    }
+}
+
+
+/*
+@breif 求三角形面积
+@param float a, float b, float c 三角形三条边的长度
+@return 三角形面积
+*/
+float triangle_area(float a, float b, float c)
+{
+    // 检查边长是否为正数
+    if (a <= 0 || b <= 0 || c <= 0)
+    {
+        printf("错误：三角形的边长必须为正数\n");
+        return -1.0f;
+    }
+    
+    // 检查是否满足三角形条件（任意两边之和大于第三边）
+    if ((a + b <= c) || (a + c <= b) || (b + c <= a))
+    {
+        printf("错误：输入的三边长度不能构成三角形\n");
+        return -1.0f;
+    }
+    
+    float p = (a + b + c) / 2;
+    return sqrt(p * (p - a) * (p - b) * (p - c));
 }

@@ -20,7 +20,8 @@ double get_value(int n);
 my_bool is_prime(int num);
 float fahrenheit_to_celsius(float fahrenheit);
 void test_escape_characters();
-
+void test_upper_to_lower(char* ch);
+float triangle_area(float a, float b, float c);
 
 #endif // TOOLS_H
 
