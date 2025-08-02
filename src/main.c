@@ -43,6 +43,7 @@ int main()
 #ifdef TEST_ESCAPE_CHARACTERS_EXAMPLE
     // 测试转义字符
     test_escape_characters();
+       printf("%d\n",strlen("c:\test\32\test.c")); //任何转义字符都是一个字符 输出13
 #endif
     system("pause");
 
