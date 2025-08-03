@@ -1,28 +1,74 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
-#include "stdio.h"
-#include "math.h"
-#include "my_type.h"
 #include "config.h"
+
+#ifdef USE_STDIO_H
+#include "stdio.h"
+#endif
+
+#ifdef USE_MATH_H
+#include "math.h"
+#endif
+
+#ifdef USE_STDLIB_H
 #include "stdlib.h"
+#endif
+
+#ifdef USE_STRING_H
 #include "string.h"
+#endif
+
+#ifdef USE_MY_TYPE_H
+#include "my_type.h"
+#endif
 
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
+#ifdef SUM_EXAMPLE
 int sum(int num1, int num2);
+#endif
+
+#ifdef COMPARE_EXAMPLE
 int compare(int num1, int num2);
+#endif
+
+#ifdef USE_SCANF_EXAMPLE
 void use_scanf();
+#endif
+
+#ifdef FACTORIAL_EXAMPLE
 int factorial(int num);
+#endif
+
+#ifdef GET_VALUE_EXAMPLE
 double get_value(int n);
+#endif
+
+#ifdef IS_PRIME_EXAMPLE
 my_bool is_prime(int num);
+#endif
+
+#ifdef FAHRENHEIT_TO_CELSIUS_EXAMPLE
 float fahrenheit_to_celsius(float fahrenheit);
+#endif
+
+#ifdef TEST_ESCAPE_CHARACTERS_EXAMPLE
 void test_escape_characters();
-void test_upper_to_lower(char* ch);
+#endif
+
+#ifdef TEST_UPPER_TO_LOWER_EXAMPLE
+void test_upper_to_lower(char *ch);
+#endif
+
+#ifdef TRIANGLE_AREA_EXAMPLE
 float triangle_area(float a, float b, float c);
+#endif
+
+#ifdef TEST_INPUT_OUTPUT_EXAMPLE
+void test_input_output();
+#endif
 
 #endif // TOOLS_H
-
-

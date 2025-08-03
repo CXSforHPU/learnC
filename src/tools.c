@@ -1,5 +1,6 @@
 #include "tools.h"
 
+#ifdef SUM_EXAMPLE
 /*
 @brief 求和
 @param int num1 数字1
@@ -12,7 +13,9 @@ int sum(int num1, int num2)
 
     return sum_number;
 }
+#endif
 
+#ifdef COMPARE_EXAMPLE
 /*
 @brief 获取两个数字中的最大值
 @param int num1 数字1
@@ -23,7 +26,9 @@ int compare(int num1, int num2)
 {
     return num1 >= num2 ? num1 : num2;
 }
+#endif
 
+#ifdef USE_SCANF_EXAMPLE
 /*
 @brief 检测输入以及比较大小后输出
 */
@@ -38,7 +43,9 @@ void use_scanf()
     max = compare(a, b);
     printf("max=%d\n", max);
 }
+#endif
 
+#ifdef FACTORIAL_EXAMPLE
 /*
 @brief 阶乘函数
 @param int num
@@ -60,7 +67,9 @@ int factorial(int num)
 
     return result;
 }
+#endif
 
+#ifdef GET_VALUE_EXAMPLE
 /*
 @brief 获取函数值
 1-1/2+1/3 + 1/(n+1)*(-1)^n
@@ -84,7 +93,9 @@ double get_value(int n)
     }
     return result;
 }
+#endif
 
+#ifdef IS_PRIME_EXAMPLE
 /*
 @brief 判断是否是素数
 @param int num 素数
@@ -108,7 +119,9 @@ my_bool is_prime(int num)
 
     return TRUE;
 }
+#endif
 
+#ifdef FAHRENHEIT_TO_CELSIUS_EXAMPLE
 /*
 @brief 华氏温度转换摄氏温度
 @param float fahrenheit 华氏温度
@@ -118,7 +131,9 @@ float fahrenheit_to_celsius(float fahrenheit)
 {
     return (fahrenheit - 32.0f) * 5.0f / 9.0f;
 }
+#endif
 
+#ifdef TEST_ESCAPE_CHARACTERS_EXAMPLE
 /*
 @brief 测试转义字符的使用
 */
@@ -155,7 +170,9 @@ void test_escape_characters()
     // 测试十六进制转义字符
     printf("十六进制41表示字符: \x41\n");
 }
+#endif
 
+#ifdef TEST_UPPER_TO_LOWER_EXAMPLE
 /*
 @brief 大写字母转小写字母 仅仅针对字符 非字符串
 */
@@ -167,8 +184,9 @@ void test_upper_to_lower(char *ch)
         *ch = *ch + 32;
     }
 }
+#endif
 
-
+#ifdef TRIANGLE_AREA_EXAMPLE
 /*
 @breif 求三角形面积
 @param float a, float b, float c 三角形三条边的长度
@@ -193,3 +211,14 @@ float triangle_area(float a, float b, float c)
     float p = (a + b + c) / 2;
     return sqrt(p * (p - a) * (p - b) * (p - c));
 }
+#endif
+
+#ifdef TEST_INPUT_OUTPUT_EXAMPLE
+/*
+@breif 测试输入输出
+*/
+void test_input_output()
+{
+    ;
+}
+#endif

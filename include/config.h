@@ -12,5 +12,15 @@
 // #define TEST_ESCAPE_CHARACTERS_EXAMPLE
 #define TEST_UPPER_TO_LOWER_EXAMPLE
 #define TRIANGLE_AREA_EXAMPLE
+#define TEST_INPUT_OUTPUT_EXAMPLE
+
+// 头文件控制
+
+#define USE_MATH_H
+#define USE_STDIO_H
+#define USE_STDLIB_H
+#define USE_STRING_H
+#define USE_WINDOWS_H
+#define USE_MY_TYPE_H
 
 #endif // CONFIG_H
