@@ -71,4 +71,10 @@ float triangle_area(float a, float b, float c);
 void test_input_output();
 #endif
 
+
+#ifdef TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
+double* solve_quadratic_equation(double a, double b, double c);
+#endif
+
+
 #endif // TOOLS_H

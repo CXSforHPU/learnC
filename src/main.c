@@ -64,6 +64,19 @@ int main()
     // 测试三角形面积
     printf("三角形面积 = %f\n", triangle_area(3.0f, 4.0f, 5.0f));
 #endif
+
+#ifdef TEST_INPUT_OUTPUT_EXAMPLE
+    // 测试输入输出
+    test_input_output();
+#endif
+
+#ifdef TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
+    // 测试求解二次方程
+    double* result = solve_quadratic_equation(1, -3, 2);
+    printf("x1 = %lf, x2 = %lf\n", result[0], result[1]);
+    free(result);
+#endif
+
     system("pause");
 
     return 0;

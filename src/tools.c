@@ -219,6 +219,75 @@ float triangle_area(float a, float b, float c)
 */
 void test_input_output()
 {
-    ;
+    char name[10]= "\0";
+    char description[50] = "\0";
+    int age = 0;
+    char ch = 0;
+    float height = 0.0f;
+
+    // scanf("%d%c%f", &age, &ch, &height);
+    // printf("%d %c %f\n", age,ch,height);
+    // scanf("%s %s", name,description);
+    // printf("请输入您的姓名：%s\n描述%s\n",name,description);
+
+    // fgets(description, sizeof(description), stdin);
+    // fputs(description, stdout);
+
+    // printf("%7d\n",age);
+
+    char ch1 = getchar();  // int
+
+    test_upper_to_lower(&ch1);
+
+    putchar(ch1);
+
 }
+#endif
+
+
+#ifdef TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
+/*
+@breif :一元二次方程求解
+        a*x^2+bx+c=0
+@param :double a x^2
+@param :double b x
+@param :double c 常数项
+@return :两根值
+*/
+double* solve_quadratic_equation(double a, double b, double c) 
+{
+    // 处理a=0的情况（线性方程）
+    if (a == 0.0) {
+        printf("系数a不能为0，这不是一个二次方程\n");
+        return NULL;
+    }
+    
+    // 动态分配内存以避免返回局部变量地址
+    double* result = (double*)malloc(2 * sizeof(double));
+    if (result == NULL) {
+        printf("内存分配失败\n");
+        return NULL;
+    }
+    
+    memset(result, 0, 2 * sizeof(double));
+
+    double disc = pow(b,2.0)-4*a*c;
+    double p = 0.0;
+    double q = 0.0;
+    
+    if (disc >= 0)
+    {   
+        p = sqrt(disc)/(2*a);
+        q = -b/(2*a);
+        result[0] = q+p;
+        result[1] = q-p;
+    }
+    else
+    {
+        printf("No real root\n");
+    }
+
+    return result;
+}
+
 #endif
