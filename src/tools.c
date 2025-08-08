@@ -291,3 +291,45 @@ double* solve_quadratic_equation(double a, double b, double c)
 }
 
 #endif
+
+#ifdef TEST_SWAP_INT_EXAMPLE
+/*
+@breif 交换两个数值
+@param num1, num2
+@return void
+*/
+void swap_int(int *num1, int *num2)
+{
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+}
+
+#endif
+
+#ifdef USE_SWITCH_CASE_EXAMPLE
+/*
+@breif 使用switch case
+@param num
+@return void
+*/
+
+void use_switch_case(int num)
+{
+    switch (num)
+    {
+    case 1:
+        printf("one\n");
+        break;
+    case 2:
+        printf("two\n");
+        break;
+    case 3:
+        printf("three\n");
+        break;
+    default:
+        printf("Invalid number\n");
+        break;
+    }
+}
+#endif

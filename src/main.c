@@ -74,7 +74,21 @@ int main()
     // 测试求解二次方程
     double* result = solve_quadratic_equation(1, -3, 2);
     printf("x1 = %lf, x2 = %lf\n", result[0], result[1]);
-    free(result);
+    free(result); //释放内存
+#endif
+
+#ifdef TEST_SWAP_INT_EXAMPLE
+    int a = 10, b = 20;
+    printf("Before swap: a = %d, b = %d\n", a, b);
+    swap_int(&a, &b);
+    printf("After swap: a = %d, b = %d\n", a, b);
+
+#endif
+
+#ifdef USE_SWITCH_CASE_EXAMPLE
+    // 测试switch case
+    use_switch_case(1);
+
 #endif
 
     system("pause");

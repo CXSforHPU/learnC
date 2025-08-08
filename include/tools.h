@@ -3,6 +3,7 @@
 
 #include "config.h"
 
+
 #ifdef USE_STDIO_H
 #include "stdio.h"
 #endif
@@ -76,5 +77,11 @@ void test_input_output();
 double* solve_quadratic_equation(double a, double b, double c);
 #endif
 
-
+#ifdef TEST_SWAP_INT_EXAMPLE
+void swap_int(int *a, int *b);
+#endif
 #endif // TOOLS_H
+
+#ifdef USE_SWITCH_CASE_EXAMPLE
+void use_switch_case(int num);
+#endif
