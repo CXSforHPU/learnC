@@ -1,5 +1,6 @@
 #include "tools.h"
-int main()
+
+void test_tools()
 {
 #ifdef _WIN32
     // 设置控制台代码页为UTF-8
@@ -72,9 +73,9 @@ int main()
 
 #ifdef TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
     // 测试求解二次方程
-    double* result = solve_quadratic_equation(1, -3, 2);
+    double *result = solve_quadratic_equation(1, -3, 2);
     printf("x1 = %lf, x2 = %lf\n", result[0], result[1]);
-    free(result); //释放内存
+    free(result); // 释放内存
 #endif
 
 #ifdef TEST_SWAP_INT_EXAMPLE
@@ -91,7 +92,23 @@ int main()
 
 #endif
 
-    system("pause");
+#ifdef IS_LEAP_YEAR_EXAMPLE
+    // 测试闰年
+    printf("is_leap_year(2020) = %d\n", is_leap_year(2020));
+#endif
 
+#ifdef FIBONACCI_SEQUENCE
+    int* fibonacci_sequence = get_fibonacci_sequence(40);
+    printf("fibonacci_sequence numbers = %d\n", get_fibonacci_sequence_num(fibonacci_sequence));
+    print_fibonacci_sequence(fibonacci_sequence);
+    free(fibonacci_sequence);
+#endif
+}
+
+int main()
+{
+    test_tools();
+
+    system("pause");
     return 0;
 }

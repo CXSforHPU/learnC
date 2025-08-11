@@ -1,5 +1,58 @@
 #include "tools.h"
 
+#if defined(USE_STDARG_H) && defined(USE_MATH_H) && defined(USE_MY_TYPE_H)
+static my_bool is_fp_zero(double number)
+{   
+    if (fabs(number) < EPSILON)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+static my_bool is_int_zero(int number)
+{
+    if (number == 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+/*
+主要问题是C语言中可变参数传递时，
+float 类型会被自动提升为 double 类型，
+所以即使声明为 float，实际传入的也是 double。
+*/
+my_bool is_zero(math_type number_type,...)
+{
+    va_list args;
+    my_bool result = FALSE;
+    va_start(args, number_type);
+
+    switch (number_type)
+    {
+    case Int:
+        result = is_int_zero(va_arg(args, int));
+        break;
+    case Double:
+        result = is_fp_zero(va_arg(args, double));
+        break;
+    default:
+        return FALSE;
+    }
+
+     va_end(args);
+
+     return result;
+}
+
+#endif
+
 #ifdef SUM_EXAMPLE
 /*
 @brief 求和
@@ -239,7 +292,7 @@ void test_input_output()
 
     test_upper_to_lower(&ch1);
 
-    putchar(ch1);
+    printf(ch1);
 
 }
 #endif
@@ -257,7 +310,7 @@ void test_input_output()
 double* solve_quadratic_equation(double a, double b, double c) 
 {
     // 处理a=0的情况（线性方程）
-    if (a == 0.0) {
+    if (is_zero(Double,a)) {
         printf("系数a不能为0，这不是一个二次方程\n");
         return NULL;
     }
@@ -332,4 +385,99 @@ void use_switch_case(int num)
         break;
     }
 }
+#endif
+
+#ifdef IS_LEAP_YEAR_EXAMPLE
+/*
+@breif 判断闰年
+    普通年能被4整除且不能被100整除的为闰年。否则为平年。（如2004年就是闰年，1900年不是闰年）
+    世纪年能被400整除的是闰年。否则为平年。（如2000年是闰年，1900年不是闰年）
+@param int year
+@return my_bool
+*/
+my_bool is_leap_year(int year)
+{
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+#endif
+
+#ifdef FIBONACCI_SEQUENCE
+/*
+@brief 测试费波纳茨数列
+@param int n
+@return int* fibonacci_sequence
+*/
+int* get_fibonacci_sequence(int n)
+{
+    // 申请内存
+    int* fibonacci_sequence = (int*) malloc((n+1) * sizeof(int));
+    if (fibonacci_sequence == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return NULL;
+    }
+    // 初始化 为0
+    memset(fibonacci_sequence, 0, (n+1) * sizeof(int));
+
+    //存储信息
+    fibonacci_sequence[0] = n; //存储总数信息
+
+    //计算数列
+    if (n == 1)
+    {
+        fibonacci_sequence[1] = 1;
+    }
+    else if (n == 2)
+    {
+        fibonacci_sequence[2] = 2;
+    }
+    else
+    {
+        fibonacci_sequence[1] = 1;
+        fibonacci_sequence[2] = 1;
+        for (int i = 3; i <= n; i++)
+        {
+            fibonacci_sequence[i] = fibonacci_sequence[i-1] + fibonacci_sequence[i-2];
+        }
+    }
+    return fibonacci_sequence;
+}
+
+void print_fibonacci_sequence(int* fibonacci_sequence)
+{
+    if (fibonacci_sequence == NULL)
+    {
+        return;
+    }
+    
+    int num = fibonacci_sequence[0];
+
+    printf("the fibonacci sequence are: \n");
+
+    for (int i = 1; i <= num; i++)
+    {
+        printf("序号%-5d:\t%10d\n", i,fibonacci_sequence[i]);
+    }
+    
+    printf("\n");
+}
+int get_fibonacci_sequence_num(int* fibonacci_sequence)
+{
+    if (fibonacci_sequence == NULL)
+    {
+        return FALSE;
+    }
+
+    return fibonacci_sequence[0];
+    
+}
+
 #endif

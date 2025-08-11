@@ -3,6 +3,9 @@
 
 #include "config.h"
 
+#ifdef USE_STDARG_H
+#include <stdarg.h>
+#endif
 
 #ifdef USE_STDIO_H
 #include "stdio.h"
@@ -26,6 +29,10 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#endif
+
+#if defined(USE_STDARG_H) && defined(USE_MATH_H) && defined(USE_MY_TYPE_H)
+my_bool is_zero(math_type number_type,...);
 #endif
 
 #ifdef SUM_EXAMPLE
@@ -84,4 +91,14 @@ void swap_int(int *a, int *b);
 
 #ifdef USE_SWITCH_CASE_EXAMPLE
 void use_switch_case(int num);
+#endif
+
+#ifdef IS_LEAP_YEAR_EXAMPLE
+my_bool is_leap_year(int year);
+#endif
+
+#ifdef FIBONACCI_SEQUENCE
+int* get_fibonacci_sequence(int n);
+void print_fibonacci_sequence(int* fibonacci_sequence);
+int get_fibonacci_sequence_num(int* fibonacci_sequence);
 #endif

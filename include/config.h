@@ -16,7 +16,8 @@
 #define TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
 #define TEST_SWAP_INT_EXAMPLE
 #define USE_SWITCH_CASE_EXAMPLE
-
+#define IS_LEAP_YEAR_EXAMPLE
+#define FIBONACCI_SEQUENCE
 
 // 头文件控制
 
@@ -26,5 +27,6 @@
 #define USE_STRING_H
 #define USE_WINDOWS_H
 #define USE_MY_TYPE_H
+#define USE_STDARG_H
 
 #endif // CONFIG_H

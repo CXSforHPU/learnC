@@ -640,6 +640,28 @@ else
     ;
 ```
 
+## 循环结构
+
+```c
+while(condition)
+{}
+
+do
+{
+  ;
+}while(condition);
+
+for(init; condition; step)
+{}
+
+```
+
+### 改变循环状态
+```c
+continue; //跳过本次循环
+break;    //结束循环
+```
+
 
 ##  5. <a name='-1'></a>关键字
 
