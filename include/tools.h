@@ -1,6 +1,10 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+#define LENGTH2INDEX(x) (x-1);
+#define INDEX2LENGTH(x) (x+1);
+
+
 #include "config.h"
 
 #ifdef USE_STDARG_H
@@ -34,6 +38,9 @@
 #if defined(USE_STDARG_H) && defined(USE_MATH_H) && defined(USE_MY_TYPE_H)
 my_bool is_zero(math_type number_type,...);
 #endif
+
+void print_horizontal_line(int length);
+
 
 #ifdef SUM_EXAMPLE
 int sum(int num1, int num2);
@@ -101,4 +108,13 @@ my_bool is_leap_year(int year);
 int* get_fibonacci_sequence(int n);
 void print_fibonacci_sequence(int* fibonacci_sequence);
 int get_fibonacci_sequence_num(int* fibonacci_sequence);
+#endif
+
+#ifdef TEST_ARRAY
+void test_array();
+#endif
+
+#ifdef SORT_FUCTION
+void print_int_array(int* array, int length);
+void bubble_sort(int* array, int length);
 #endif

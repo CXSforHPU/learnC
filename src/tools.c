@@ -1,8 +1,19 @@
 #include "tools.h"
 
+
+void print_horizontal_line(int length)
+{
+    int i;
+    for (i = 0; i < length; i++)
+    {
+        printf("-");
+    }
+    printf("\n");
+}
+
 #if defined(USE_STDARG_H) && defined(USE_MATH_H) && defined(USE_MY_TYPE_H)
 static my_bool is_fp_zero(double number)
-{   
+{
     if (fabs(number) < EPSILON)
     {
         return TRUE;
@@ -28,7 +39,7 @@ static my_bool is_int_zero(int number)
 float 类型会被自动提升为 double 类型，
 所以即使声明为 float，实际传入的也是 double。
 */
-my_bool is_zero(math_type number_type,...)
+my_bool is_zero(math_type number_type, ...)
 {
     va_list args;
     my_bool result = FALSE;
@@ -46,9 +57,47 @@ my_bool is_zero(math_type number_type,...)
         return FALSE;
     }
 
-     va_end(args);
+    va_end(args);
 
-     return result;
+    return result;
+}
+
+#endif
+
+#ifdef SORT_FUCTION
+
+void print_int_array(int *array, int length)
+{
+    int index = LENGTH2INDEX(length);
+    for (int i = 0; i <= index; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+/*
+@brief 冒泡排序
+    时间复杂度 O(n^2)
+    稳定
+    空间复杂度 O(1)
+@param int* array 数组
+@param int length 位序
+    与索引不同
+@return 无
+*/
+void bubble_sort(int *array, int length)
+{
+    int max_index = LENGTH2INDEX(length);
+    /* 确定排序趟数 max_index - 1 */
+    for (int i = max_index; i > 0; i--)
+    {
+        /* 确定比较的元素个数 其中 i是此趟排序确定的 索引 */
+        for (int j = 1; j <= i; j++)
+        {
+            array[j] > array[j - 1] ?: swap_int(&array[j], &array[j - 1]);
+        }
+    }
 }
 
 #endif
@@ -253,14 +302,14 @@ float triangle_area(float a, float b, float c)
         printf("错误：三角形的边长必须为正数\n");
         return -1.0f;
     }
-    
+
     // 检查是否满足三角形条件（任意两边之和大于第三边）
     if ((a + b <= c) || (a + c <= b) || (b + c <= a))
     {
         printf("错误：输入的三边长度不能构成三角形\n");
         return -1.0f;
     }
-    
+
     float p = (a + b + c) / 2;
     return sqrt(p * (p - a) * (p - b) * (p - c));
 }
@@ -272,7 +321,7 @@ float triangle_area(float a, float b, float c)
 */
 void test_input_output()
 {
-    char name[10]= "\0";
+    char name[10] = "\0";
     char description[50] = "\0";
     int age = 0;
     char ch = 0;
@@ -288,15 +337,13 @@ void test_input_output()
 
     // printf("%7d\n",age);
 
-    char ch1 = getchar();  // int
+    char ch1 = getchar(); // int
 
     test_upper_to_lower(&ch1);
 
     printf(ch1);
-
 }
 #endif
-
 
 #ifdef TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
 /*
@@ -307,33 +354,35 @@ void test_input_output()
 @param :double c 常数项
 @return :两根值
 */
-double* solve_quadratic_equation(double a, double b, double c) 
+double *solve_quadratic_equation(double a, double b, double c)
 {
     // 处理a=0的情况（线性方程）
-    if (is_zero(Double,a)) {
+    if (is_zero(Double, a))
+    {
         printf("系数a不能为0，这不是一个二次方程\n");
         return NULL;
     }
-    
+
     // 动态分配内存以避免返回局部变量地址
-    double* result = (double*)malloc(2 * sizeof(double));
-    if (result == NULL) {
+    double *result = (double *)malloc(2 * sizeof(double));
+    if (result == NULL)
+    {
         printf("内存分配失败\n");
         return NULL;
     }
-    
+
     memset(result, 0, 2 * sizeof(double));
 
-    double disc = pow(b,2.0)-4*a*c;
+    double disc = pow(b, 2.0) - 4 * a * c;
     double p = 0.0;
     double q = 0.0;
-    
+
     if (disc >= 0)
-    {   
-        p = sqrt(disc)/(2*a);
-        q = -b/(2*a);
-        result[0] = q+p;
-        result[1] = q-p;
+    {
+        p = sqrt(disc) / (2 * a);
+        q = -b / (2 * a);
+        result[0] = q + p;
+        result[1] = q - p;
     }
     else
     {
@@ -413,24 +462,24 @@ my_bool is_leap_year(int year)
 /*
 @brief 测试费波纳茨数列
 @param int n
-@return int* fibonacci_sequence
+@return int* fibonacci_sequence 需要free释放
 */
-int* get_fibonacci_sequence(int n)
+int *get_fibonacci_sequence(int n)
 {
     // 申请内存
-    int* fibonacci_sequence = (int*) malloc((n+1) * sizeof(int));
+    int *fibonacci_sequence = (int *)malloc((n + 1) * sizeof(int));
     if (fibonacci_sequence == NULL)
     {
         printf("Memory allocation failed\n");
         return NULL;
     }
     // 初始化 为0
-    memset(fibonacci_sequence, 0, (n+1) * sizeof(int));
+    memset(fibonacci_sequence, 0, (n + 1) * sizeof(int));
 
-    //存储信息
-    fibonacci_sequence[0] = n; //存储总数信息
+    // 存储信息
+    fibonacci_sequence[0] = n; // 存储总数信息
 
-    //计算数列
+    // 计算数列
     if (n == 1)
     {
         fibonacci_sequence[1] = 1;
@@ -445,31 +494,31 @@ int* get_fibonacci_sequence(int n)
         fibonacci_sequence[2] = 1;
         for (int i = 3; i <= n; i++)
         {
-            fibonacci_sequence[i] = fibonacci_sequence[i-1] + fibonacci_sequence[i-2];
+            fibonacci_sequence[i] = fibonacci_sequence[i - 1] + fibonacci_sequence[i - 2];
         }
     }
     return fibonacci_sequence;
 }
 
-void print_fibonacci_sequence(int* fibonacci_sequence)
+void print_fibonacci_sequence(int *fibonacci_sequence)
 {
     if (fibonacci_sequence == NULL)
     {
         return;
     }
-    
+
     int num = fibonacci_sequence[0];
 
     printf("the fibonacci sequence are: \n");
 
     for (int i = 1; i <= num; i++)
     {
-        printf("序号%-5d:\t%10d\n", i,fibonacci_sequence[i]);
+        printf("序号%-5d:\t%10d\n", i, fibonacci_sequence[i]);
     }
-    
+
     printf("\n");
 }
-int get_fibonacci_sequence_num(int* fibonacci_sequence)
+int get_fibonacci_sequence_num(int *fibonacci_sequence)
 {
     if (fibonacci_sequence == NULL)
     {
@@ -477,7 +526,66 @@ int get_fibonacci_sequence_num(int* fibonacci_sequence)
     }
 
     return fibonacci_sequence[0];
-    
+}
+
+#endif
+
+#ifdef TEST_ARRAY
+/*
+@breif 测试数组
+*/
+
+void test_array()
+{
+
+    /* 一维数组 */
+    int arr[10];
+
+    memset(arr, 0, sizeof(arr));
+
+    printf("一维数组");
+    printf("数组大小:%d\n", sizeof(arr));
+    printf("地址如下\n");
+    for (int i = 0; i < 10; i++)
+    {
+        printf("arr[%d]:\t%p\n", i,&arr[i]);
+    }
+
+
+    print_horizontal_line(10);
+    /* 二维数组 */
+
+    int arr2[2][3] = {{1, 9, 0}, {7, 1, 6}};
+
+    // memset(arr2, 0, sizeof(arr2));
+
+    bubble_sort(arr2[0] , sizeof(arr2)/sizeof(arr2[0][0]));
+
+
+    for(int i = 0; i < 2; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            
+            printf("arr2[%d][%d]:\t%d\n", i, j, arr2[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("二维数组");
+    printf("数组大小:%d\n", sizeof(arr2));
+    printf("地址如下\n");
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("arr2[%d][%d]:\t%p\n", i,j,&arr2[i][j]);
+        }
+    }
+
+
+    print_horizontal_line(10);
 }
 
 #endif

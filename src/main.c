@@ -103,6 +103,22 @@ void test_tools()
     print_fibonacci_sequence(fibonacci_sequence);
     free(fibonacci_sequence);
 #endif
+
+#ifdef TEST_ARRAY
+    test_array();
+#endif
+
+#ifdef SORT_FUCTION
+    int arr[10] = { 5, 4, 3, 2, 1, 9, 8, 7, 6, 0 };
+    int length = sizeof(arr) / sizeof(arr[0]);
+    printf("排序前：\n");
+    print_int_array(arr, length);
+    printf("排序后：\n");
+    bubble_sort(arr, length);
+    print_int_array(arr, length);
+    
+#endif
+
 }
 
 int main()

@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 /* 宏控制编译示例 */
+#define SORT_FUCTION
 // #define SUM_EXAMPLE
 // #define COMPARE_EXAMPLE
 // #define USE_SCANF_EXAMPLE
@@ -18,6 +19,9 @@
 #define USE_SWITCH_CASE_EXAMPLE
 #define IS_LEAP_YEAR_EXAMPLE
 #define FIBONACCI_SEQUENCE
+#define TEST_ARRAY
+
+
 
 // 头文件控制
 
