@@ -559,8 +559,9 @@ void test_array()
 
     // memset(arr2, 0, sizeof(arr2));
 
+#ifdef BUBBLE_SORT
     bubble_sort(arr2[0] , sizeof(arr2)/sizeof(arr2[0][0]));
-
+#endif
 
     for(int i = 0; i < 2; i++)
     {
