@@ -119,6 +119,21 @@ void test_tools()
     
 #endif
 
+#ifdef TEST_FUNCTION
+    print_horizontal_line(20);
+    printf("测试函数嵌套");
+    double a = 0;
+    double b = 0;
+    double c = 0;
+    double d = 0;
+    printf("请输入a,b,c,d的值:\n");
+    scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+    printf("最大值为:%lf\n",Max4(a, b, c, d));
+
+    print_horizontal_line(20);
+    printf("测试函数递归");
+#endif
+
 }
 
 int main()

@@ -47,9 +47,18 @@
 		* 6.2.2. [引用 与 初始化](#-1)
 		* 6.2.3. [二维数组的存储方式](#-1)
 	* 6.3. [字符数组](#-1)
-* 7. [[排序](./doc/sort.md)](#.docsort.md)
-* 8. [[关键字](./doc/关键字.md)](#.doc.md)
-* 9. [[附录](./doc/附录.md)](#.doc.md-1)
+		* 6.3.1. [C语言字符串处理](#C-1)
+* 7. [函数](#-1)
+	* 7.1. [为什么写函数](#-1)
+	* 7.2. [函数定义](#-1)
+	* 7.3. [如何定义函数](#-1)
+	* 7.4. [函数调用](#-1)
+	* 7.5. [函数调用时的数据传递](#-1)
+	* 7.6. [函数调用过程](#-1)
+	* 7.7. [对被调用函数的声明和函数原型](#-1)
+* 8. [[排序](./doc/sort.md)](#.docsort.md)
+* 9. [[关键字](./doc/关键字.md)](#.doc.md)
+* 10. [[附录](./doc/附录.md)](#.doc.md-1)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -769,7 +778,7 @@ char c[10];
 * 其自动初始化以 `\0` 结束 
 
 
-#### C语言字符串处理
+####  6.3.1. <a name='C-1'></a>C语言字符串处理
 
 ##### 字符串基础概念
 ```c
@@ -934,15 +943,15 @@ char str2[] = "abc";            // 有\0结束符，长度为3
 - 注意`strlen`返回的是`size_t`类型（无符号整数），在进行算术运算时要特别小心
 
 
-## 函数
+##  7. <a name='-1'></a>函数
 
-### 为什么写函数
+###  7.1. <a name='-1'></a>为什么写函数
 
 * 使得程序维护简单，使得程序不会过于冗余，变得精炼
 * 使用模块化编程的思路
 
 
-### 函数定义
+###  7.2. <a name='-1'></a>函数定义
 
 > 函数声明
 
@@ -959,19 +968,294 @@ function();
 > 函数定义
 
 ```c
+/*
+分为库函数以及自定义函数
+分为 无参函数以及有参函数
+
+*/
+
+
 void function()
 {
   printf("hello world");
 }
 ```
 
+###  7.3. <a name='-1'></a>如何定义函数
 
-##  7. <a name='.docsort.md'></a>[排序](./doc/sort.md)
+* 指定函数的名字，以便以后按名调用
+* 指定函数的类型，即函数返回值的类型
+* 指定函数的参数的名字和类型，以便调用函数时传入参数，对于无参函数不需要指定
+* 指定函数应该完成什么操作，也就是函数是做什么的，函数的功能
 
-##  8. <a name='.doc.md'></a>[关键字](./doc/关键字.md)
+```C
+void function(void) // 明确指明没有参数，编译出错
+
+void function()   // 默认无参，传参无影响
+
+void function(int a, int b) // 默认参数类型是int 
+```
+
+###  7.4. <a name='-1'></a>函数调用
+
+1. 函数调用语句
+```c
+function();
+```
+2. 函数表达式
+
+```c
+int a = function(a, b);
+```
+
+3. 函数作为参数
+
+```c
+function(a, function(a, b));
+
+```
+
+###  7.5. <a name='-1'></a>函数调用时的数据传递
+
+1. 形参和实参
+  1. 形参： 函数定义时候的参数名称
+  2. 实参：函数调用时传入的参数名称；可以是常量，变量，表达式，函数
+2. 实参与形参的数据传递
+  1. 系统会把实参的值传递给被调用函数的形参。该值在函数调用期间有效 `虚实结合`
+
+###  7.6. <a name='-1'></a>函数调用过程
+
+1. 在定义函数中指定的形参，在未出现函数调用时，他们并不占内存的存储单元。发生函数调用时，函数的形参被临时分配内存单元
+  1. `值传递`：实参传递给形参后，形参是实参的一份临时copy，对形参的修改不会影响实参
+  2. `引用传递`：实参传递给形参后，形参和实参共用一个内存单元，对形参的修改会影响实参；传递指针
+2. 将实参对应的值传递给 形参
+3. 可以通过return语句返回给调用者
+  1. 可以带会值
+  2. 可以不带返回值
+4. 函数调用结束后，形参所占的内存单元被释放
+5. 定义函数时指定的函数类型一般应该和 `return` 语句中的表达式类型一致
+
+![函数值传递](./picture/21函数值传递示意.png)
+
+
+###  7.7. <a name='-1'></a>对被调用函数的声明和函数原型
+
+1. 在使用之前声明
+2. 对于库函数需要 `#include <algorithm>`
+
+### 函数嵌套调用
+
+```c
+void f(int a) {
+
+  f(a);
+}
+
+```
 
 
 
-##  9. <a name='.doc.md-1'></a>[附录](./doc/附录.md)
+### 递归 (Recursion)
+
+递归是一种重要的编程技术，函数直接或间接地调用自身来解决问题。递归将复杂问题分解为相似但规模更小的子问题。
+
+#### 递归的基本要素
+
+1. **基础情况(Base Case)**：递归的终止条件，防止无限递归
+2. **递归情况(Recursive Case)**：函数调用自身，处理规模更小的问题
+
+#### 递归示例
+
+##### 1. 计算阶乘
+```c
+#include <stdio.h>
+
+// 递归计算阶乘
+int factorial(int n) {
+    // 基础情况
+    if (n <= 1) {
+        return 1;
+    }
+    // 递归情况
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n = 5;
+    printf("%d! = %d\n", n, factorial(n));
+    return 0;
+}
+```
+
+##### 2. 斐波那契数列
+```c
+#include <stdio.h>
+
+// 递归计算斐波那契数列
+int fibonacci(int n) {
+    // 基础情况
+    if (n <= 1) {
+        return n;
+    }
+    // 递归情况
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+    return 0;
+}
+```
+
+##### 3. 汉诺塔问题
+```c
+#include <stdio.h>
+
+// 递归解决汉诺塔问题
+void hanoi(int n, char from, char aux, char to) {
+    // 基础情况
+    if (n == 1) {
+        printf("Move disk 1 from %c to %c\n", from, to);
+        return;
+    }
+    // 递归情况
+    // 将前n-1个盘子从from移动到aux
+    hanoi(n - 1, from, to, aux);
+    // 将第n个盘子从from移动到to
+    printf("Move disk %d from %c to %c\n", n, from, to);
+    // 将n-1个盘子从aux移动到to
+    hanoi(n - 1, aux, from, to);
+}
+
+int main() {
+    int n = 3;
+    hanoi(n, 'A', 'B', 'C');
+    return 0;
+}
+```
+
+#### 递归与循环的比较
+
+##### 使用循环计算阶乘
+```c
+int factorial_iterative(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+```
+
+##### 使用递归计算阶乘
+```c
+int factorial_recursive(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    return n * factorial_recursive(n - 1);
+}
+```
+
+#### 递归的优缺点
+
+##### 优点
+- 代码简洁，易于理解
+- 自然地表达问题的递归结构
+- 适合处理树形结构、分治算法等问题
+
+##### 缺点
+- 可能导致大量重复计算
+- 占用较多内存（函数调用栈）
+- 可能出现栈溢出
+
+#### 递归优化技术
+
+##### 1. 记忆化递归（Memoization）
+```c
+#include <stdio.h>
+#include <string.h>
+
+// 使用记忆化优化斐波那契计算
+int memo[100];
+
+int fibonacci_memo(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    
+    // 如果已经计算过，直接返回结果
+    if (memo[n] != -1) {
+        return memo[n];
+    }
+    
+    // 计算并存储结果
+    memo[n] = fibonacci_memo(n - 1) + fibonacci_memo(n - 2);
+    return memo[n];
+}
+
+int main() {
+    // 初始化记忆数组
+    memset(memo, -1, sizeof(memo));
+    
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", fibonacci_memo(i));
+    }
+    printf("\n");
+    return 0;
+}
+```
+
+#### 递归的应用场景
+
+1. **数学计算**：阶乘、斐波那契数列、组合数学等
+2. **树和图遍历**：二叉树遍历、图的深度优先搜索等
+3. **分治算法**：快速排序、归并排序、二分查找等
+4. **回溯算法**：八皇后问题、迷宫求解等
+5. **动态规划**：某些DP问题的递归实现
+
+#### 注意事项
+
+1. 必须有明确的基础情况，否则会导致无限递归
+2. 递归深度不宜过大，防止栈溢出
+3. 注意重复计算问题，必要时使用记忆化
+4. 对于简单问题，迭代可能比递归更高效
+
+#### 尾递归优化
+
+尾递归是一种特殊的递归形式，递归调用是函数的最后一个操作：
+
+```c
+// 普通递归
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);  // 不是尾递归，因为还有乘法操作
+}
+
+// 尾递归版本
+int factorial_tail(int n, int acc) {
+    if (n <= 1) return acc;
+    return factorial_tail(n - 1, n * acc);  // 尾递归
+}
+
+int factorial_optimized(int n) {
+    return factorial_tail(n, 1);
+}
+```
+
+* 尾递归可以被编译器优化为循环，避免栈溢出问题。
+
+
+
+##  8. <a name='.docsort.md'></a>[排序](./doc/sort.md)
+
+##  9. <a name='.doc.md'></a>[关键字](./doc/关键字.md)
+
+
+
+##  10. <a name='.doc.md-1'></a>[附录](./doc/附录.md)
 
 

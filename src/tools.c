@@ -590,3 +590,24 @@ void test_array()
 }
 
 #endif
+
+#ifdef TEST_FUNCTION
+/*
+@breif 测试函数
+*/
+
+/* 函数嵌套测试 */
+static double Max(double a, double b)
+{
+    return a > b ? a : b;
+}
+
+double Max4(double a, double b, double c, double d)
+{
+    return Max(Max(a, b), Max(c, d));
+}
+
+/* 函数递归测试 */
+
+
+#endif

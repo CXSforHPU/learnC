@@ -19,8 +19,8 @@
 // #define USE_SWITCH_CASE_EXAMPLE
 // #define IS_LEAP_YEAR_EXAMPLE
 // #define FIBONACCI_SEQUENCE
-#define TEST_ARRAY
-
+// #define TEST_ARRAY
+#define TEST_FUNCTION
 
 
 // 头文件控制

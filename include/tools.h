@@ -118,3 +118,7 @@ void test_array();
 void print_int_array(int* array, int length);
 void bubble_sort(int* array, int length);
 #endif
+
+#ifdef TEST_FUNCTION
+double Max4(double a, double b, double c, double d);
+#endif
