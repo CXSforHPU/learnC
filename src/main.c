@@ -109,6 +109,8 @@ void test_tools()
 #endif
 
 #ifdef SORT_FUCTION
+    print_horizontal_line(20);
+    printf("冒泡排序\n");
     int arr[10] = { 5, 4, 3, 2, 1, 9, 8, 7, 6, 0 };
     int length = sizeof(arr) / sizeof(arr[0]);
     printf("排序前：\n");
@@ -116,22 +118,38 @@ void test_tools()
     printf("排序后：\n");
     bubble_sort(arr, length);
     print_int_array(arr, length);
+
+    print_horizontal_line(20);
+    printf("选择排序\n");
+    int arr2[10] = { 5, 4, 3, 2, 1, 9, 8, 7, 6, 0 };
+    length = sizeof(arr2) / sizeof(arr2[0]);
+    printf("排序前：\n");
+    print_int_array(arr2, length);
+    printf("排序后：\n");
+    selection_sort(arr2, length);
+    print_int_array(arr2, length);
     
 #endif
 
 #ifdef TEST_FUNCTION
     print_horizontal_line(20);
-    printf("测试函数嵌套");
-    double a = 0;
-    double b = 0;
-    double c = 0;
-    double d = 0;
-    printf("请输入a,b,c,d的值:\n");
-    scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
-    printf("最大值为:%lf\n",Max4(a, b, c, d));
+    // printf("测试函数嵌套");
+    // double a = 0;
+    // double b = 0;
+    // double c = 0;
+    // double d = 0;
+    // printf("请输入a,b,c,d的值:\n");
+    // scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+    // printf("最大值为:%lf\n",Max4(a, b, c, d));
 
     print_horizontal_line(20);
     printf("测试函数递归");
+
+    printf("factorial(5) = %d\n", factorial_recursive(10));
+
+    print_horizontal_line(20);
+    printf("测试函数递归\n");
+    hanoi(5, 'A', 'B', 'C');
 #endif
 
 }

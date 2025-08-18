@@ -100,6 +100,40 @@ void bubble_sort(int *array, int length)
     }
 }
 
+/*
+@brief 选择排序
+    算法特点
+    时间复杂度：O(n²) - 无论最好、最坏还是平均情况
+    空间复杂度：O(1) - 原地排序算法
+    稳定性：不稳定排序
+    比较次数：固定为 n(n-1)/2 次
+    交换次数：最多 n-1 次
+@param int* array 数组
+@param int length 位序
+    与索引不同
+@return 无
+*/
+void selection_sort(int *array, int length)
+{
+    int max_index = LENGTH2INDEX(length);
+
+    for(int i = 0 ;i <= max_index; i++ )
+    {
+        int min_point = i;
+        for (int j = i + 1; j <= max_index; j++)
+        {
+            if(array[j] < array[min_point])
+            {
+                min_point = j;
+            }
+        }
+        if (min_point != i)
+        {
+            swap_int(&array[i], &array[min_point]);
+        }
+    }
+}
+
 #endif
 
 #ifdef SUM_EXAMPLE
@@ -394,7 +428,7 @@ double *solve_quadratic_equation(double a, double b, double c)
 
 #endif
 
-#ifdef TEST_SWAP_INT_EXAMPLE
+#if defined(TEST_SWAP_INT_EXAMPLE) || defined(SORT_FUCTION)
 /*
 @breif 交换两个数值
 @param num1, num2
@@ -608,6 +642,35 @@ double Max4(double a, double b, double c, double d)
 }
 
 /* 函数递归测试 */
+int factorial_recursive(int n)
+{
+    if (n < 0)
+    {
+        printf("Invalid input\n");
+        return -1;
+    }
+    
 
+    if (n <= 1) {
+        return 1;
+    }
+    return n * factorial_recursive(n - 1);
+}
+void hanoi(int n, char from, char aux, char to) {
+    // 基础情况
+    if (n == 1) {
+        printf("Move disk 1 from %c to %c\n", from, to);
+        return;
+    }
+    // 递归情况
+    // 将前n-1个盘子从from移动到aux
+    hanoi(n - 1, from, to, aux);
+    // 将第n个盘子从from移动到to
+    printf("Move disk %d from %c to %c\n", n, from, to);
+    // 将n-1个盘子从aux移动到to
+    hanoi(n - 1, aux, from, to);
+}
 
 #endif
+
+

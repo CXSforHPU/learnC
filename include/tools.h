@@ -91,9 +91,10 @@ void test_input_output();
 double* solve_quadratic_equation(double a, double b, double c);
 #endif
 
-#ifdef TEST_SWAP_INT_EXAMPLE
+#if defined(TEST_SWAP_INT_EXAMPLE) || defined(SORT_FUCTION)
 void swap_int(int *a, int *b);
 #endif
+
 #endif // TOOLS_H
 
 #ifdef USE_SWITCH_CASE_EXAMPLE
@@ -117,8 +118,11 @@ void test_array();
 #ifdef SORT_FUCTION
 void print_int_array(int* array, int length);
 void bubble_sort(int* array, int length);
+void selection_sort(int *array, int length);
 #endif
 
 #ifdef TEST_FUNCTION
 double Max4(double a, double b, double c, double d);
+int factorial_recursive(int n);
+void hanoi(int n, char from, char aux, char to);
 #endif

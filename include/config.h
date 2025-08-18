@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 /* 宏控制编译示例 */
-// #define SORT_FUCTION
+#define SORT_FUCTION
 // #define SUM_EXAMPLE
 // #define COMPARE_EXAMPLE
 // #define USE_SCANF_EXAMPLE
