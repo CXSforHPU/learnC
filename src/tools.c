@@ -671,6 +671,49 @@ void hanoi(int n, char from, char aux, char to) {
     hanoi(n - 1, aux, from, to);
 }
 
+/* 外部函数调用 */
+
+void Input(char arr[])
+{
+    gets(arr);
+}
+
+void DelChar(char arr[], char ch)
+{
+    int i = 0, j = 0;
+
+    while (arr[i] != '\0')
+    {
+        if (arr[i] != ch)
+        {
+            arr[j] = arr[i];
+            j++;
+        }
+        i++;
+    }
+    arr[j] = '\0';
+}
+
 #endif
 
+#ifdef LEARN_POINTER
+
+void modify_data()
+{
+    print_horizontal_line(20);
+    printf("修改前\n");
+    int a = 10;
+    int *p = &a;
+    printf("a = %d\n", a);
+    printf("*p = %d\n", *p);
+    a = 20;
+    print_horizontal_line(20);
+    printf("修改后\n");
+    printf("a = %d\n", a);
+    printf("*p = %d\n", *p);
+
+}
+
+
+#endif
 

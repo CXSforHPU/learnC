@@ -20,8 +20,8 @@
 // #define IS_LEAP_YEAR_EXAMPLE
 // #define FIBONACCI_SEQUENCE
 // #define TEST_ARRAY
-#define TEST_FUNCTION
-
+// #define TEST_FUNCTION
+#define LEARN_POINTER
 
 // 头文件控制
 

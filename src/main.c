@@ -1,5 +1,9 @@
 #include "tools.h"
 
+extern void Input();
+extern void DelChar(char arr[],char ch);
+
+
 void test_tools()
 {
 #ifdef _WIN32
@@ -150,6 +154,19 @@ void test_tools()
     print_horizontal_line(20);
     printf("测试函数递归\n");
     hanoi(5, 'A', 'B', 'C');
+
+    print_horizontal_line(20);
+
+    printf("外部函数调用测试\n");
+    char str[20] = { '\0' };
+
+    Input(str);
+    DelChar(str, ' ');
+    printf("输入的字符串为:%s\n", str);
+#endif
+
+#ifdef LEARN_POINTER
+    modify_data();
 #endif
 
 }

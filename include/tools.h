@@ -126,3 +126,8 @@ double Max4(double a, double b, double c, double d);
 int factorial_recursive(int n);
 void hanoi(int n, char from, char aux, char to);
 #endif
+
+
+#ifdef LEARN_POINTER
+void modify_data();
+#endif
