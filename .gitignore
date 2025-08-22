@@ -5,3 +5,5 @@ build/
 .vscode/
 out/
 .lingma/
+dev_project/*.exe
+dev_project/src/*.o

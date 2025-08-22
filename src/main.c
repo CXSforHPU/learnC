@@ -1,4 +1,5 @@
 #include "tools.h"
+#include "ds.h"
 
 extern void Input();
 extern void DelChar(char arr[],char ch);
@@ -167,6 +168,16 @@ void test_tools()
 
 #ifdef LEARN_POINTER
     modify_data();
+#endif
+
+#ifdef LEARN_DS
+    print_horizontal_line(20);
+    head_pointer head = init_list();
+    head_insect(head, 1);
+    head_insect(head, 2);
+    head_insect(head, 3);
+
+    print_list(head);
 #endif
 
 }

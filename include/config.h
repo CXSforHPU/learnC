@@ -22,6 +22,7 @@
 // #define TEST_ARRAY
 // #define TEST_FUNCTION
 #define LEARN_POINTER
+#define LEARN_DS
 
 // 头文件控制
 
