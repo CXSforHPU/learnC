@@ -5,13 +5,11 @@
 
 /* 链表 */
 
-
-
 /**
  * 初始化一个链表
- * 
+ *
  * 该函数创建一个新的链表头节点，分配内存并初始化其成员。
- * 
+ *
  * @return head_pointer 指向新创建链表头节点的指针，如果创建失败则返回NULL
  */
 head_pointer init_list()
@@ -25,7 +23,7 @@ head_pointer init_list()
         printf("creat fail!\n");
         return NULL;
     }
-    
+
     /* 初始化头节点的数据和指针 */
     head->data = 0;
     head->next = NULL;
@@ -39,7 +37,7 @@ head_pointer init_list()
  * @param x - 要插入的数据值
  * @return 操作成功返回TRUE，失败返回FALSE
  */
-my_bool head_insect(head_pointer h,int x)
+my_bool head_insect(head_pointer h, int x)
 {
     /* 创建新结点 */
     node_pointer q = (node_pointer)malloc(sizeof(node));
@@ -71,7 +69,7 @@ void print_list(head_pointer h)
     /* 依次打印每个节点的数据域 */
     while (p != NULL)
     {
-        printf("%d ",p->data);
+        printf("%d ", p->data);
         p = p->next;
     }
     /* 打印换行符，使输出更清晰 */
@@ -87,14 +85,14 @@ int get_length(head_pointer h)
 {
     int length = 0;
     node_pointer p = h;
-    
+
     /* 遍历链表直到末尾，统计节点数量 */
     while (p->next != NULL)
     {
         length++;
         p = p->next;
     }
-    
+
     return length;
 }
 /**
@@ -103,7 +101,7 @@ int get_length(head_pointer h)
  * @param data 要插入的数据
  * @return 插入成功返回TRUE，失败返回FALSE
  */
-my_bool tail_insect(head_pointer h,int data)
+my_bool tail_insect(head_pointer h, int data)
 {
     node_pointer q = (node_pointer)malloc(sizeof(node));
     node_pointer p = h;
@@ -122,20 +120,20 @@ my_bool tail_insect(head_pointer h,int data)
     {
         p = p->next;
     }
-    
+
     p->next = q;
-    
+
     return TRUE;
 }
 
 /**
  * 根据指定长度查找链表中的节点指针
- * 
+ *
  * @param h 链表的头指针
  * @param length 要查找的位置长度（从1开始计数）
  * @return 返回第length个节点的指针，如果超出范围则返回NULL
  */
-node_pointer find_node_pointer_length(head_pointer h,int length)
+node_pointer find_node_pointer_length(head_pointer h, int length)
 {
     int max_length = get_length(h);
 
@@ -151,7 +149,7 @@ node_pointer find_node_pointer_length(head_pointer h,int length)
 
     int i = 1;
     node_pointer p = h;
-    
+
     /* 遍历链表直到找到指定位置 */
     while (p->next != NULL && i <= length)
     {
@@ -160,7 +158,6 @@ node_pointer find_node_pointer_length(head_pointer h,int length)
     }
 
     return p;
-
 }
 
 /**
@@ -169,10 +166,10 @@ node_pointer find_node_pointer_length(head_pointer h,int length)
  * @param value 要查找的值
  * @return 找到的节点指针，如果未找到则返回NULL
  */
-node_pointer find_node_pointer_value(head_pointer h,int value)
+node_pointer find_node_pointer_value(head_pointer h, int value)
 {
     node_pointer p = h;
-    
+
     /* 遍历链表查找目标值 */
     while (p->next != NULL)
     {
@@ -192,12 +189,12 @@ node_pointer find_node_pointer_value(head_pointer h,int value)
  * @param length 要删除节点的位置（从1开始计数）
  * @return 删除成功返回TRUE，失败返回FALSE
  */
-my_bool delete_node_pointer_length(head_pointer h,int length)
+my_bool delete_node_pointer_length(head_pointer h, int length)
 {
     node_pointer q = NULL;
-    
+
     /* 查找要删除节点的前一个节点 */
-    node_pointer p = find_node_pointer_length(h,length-1);
+    node_pointer p = find_node_pointer_length(h, length - 1);
 
     if (p == NULL)
     {
@@ -217,11 +214,11 @@ my_bool delete_node_pointer_length(head_pointer h,int length)
  * @param value 要删除的节点值
  * @return TRUE表示删除成功，FALSE表示未找到该值
  */
-my_bool delete_node_pointer_value(head_pointer h,int value)
+my_bool delete_node_pointer_value(head_pointer h, int value)
 {
     node_pointer q = NULL;
-    node_pointer p =h;
-    
+    node_pointer p = h;
+
     /* 遍历链表查找要删除的节点 */
     while (p->next->next != NULL)
     {
@@ -238,7 +235,6 @@ my_bool delete_node_pointer_value(head_pointer h,int value)
     }
 
     return FALSE;
-
 }
 
 /**
@@ -248,18 +244,18 @@ my_bool delete_node_pointer_value(head_pointer h,int value)
  * @param data 要插入的数据
  * @return 插入成功返回TRUE，失败返回FALSE
  */
-my_bool insert_node_pointer_length(head_pointer h,int length,int data)
+my_bool insert_node_pointer_length(head_pointer h, int length, int data)
 {
     /* 查找插入位置的前一个节点,找不到说明输入length不合理 */
-    node_pointer p = find_node_pointer_length(h,length-1);
-    if(p == NULL)
+    node_pointer p = find_node_pointer_length(h, length - 1);
+    if (p == NULL)
     {
         return FALSE;
     }
-    
+
     /* 分配新节点内存 */
     node_pointer q = (node_pointer)malloc(sizeof(node));
-    
+
     if (q == NULL)
     {
         return FALSE;
@@ -267,7 +263,7 @@ my_bool insert_node_pointer_length(head_pointer h,int length,int data)
 
     /* 赋值 */
     q->data = data;
-    
+
     /* 执行插入操作 */
     q->next = p->next; /* 下一个节点或者 NULL */
     p->next = q;
@@ -300,9 +296,9 @@ my_bool free_nodes(head_pointer h)
 
 /**
  * @brief 销毁链表
- * 
+ *
  * 该函数用于销毁整个链表，释放所有节点内存以及头指针内存
- * 
+ *
  * @param h 链表头指针
  * @return my_bool 返回TRUE表示销毁成功
  */

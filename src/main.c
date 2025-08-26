@@ -2,8 +2,7 @@
 #include "ds.h"
 
 extern void Input();
-extern void DelChar(char arr[],char ch);
-
+extern void DelChar(char arr[], char ch);
 
 void test_tools()
 {
@@ -103,7 +102,7 @@ void test_tools()
 #endif
 
 #ifdef FIBONACCI_SEQUENCE
-    int* fibonacci_sequence = get_fibonacci_sequence(40);
+    int *fibonacci_sequence = get_fibonacci_sequence(40);
     printf("fibonacci_sequence numbers = %d\n", get_fibonacci_sequence_num(fibonacci_sequence));
     print_fibonacci_sequence(fibonacci_sequence);
     free(fibonacci_sequence);
@@ -116,7 +115,7 @@ void test_tools()
 #ifdef SORT_FUCTION
     print_horizontal_line(20);
     printf("冒泡排序\n");
-    int arr[10] = { 5, 4, 3, 2, 1, 9, 8, 7, 6, 0 };
+    int arr[10] = {5, 4, 3, 2, 1, 9, 8, 7, 6, 0};
     int length = sizeof(arr) / sizeof(arr[0]);
     printf("排序前：\n");
     print_int_array(arr, length);
@@ -126,14 +125,14 @@ void test_tools()
 
     print_horizontal_line(20);
     printf("选择排序\n");
-    int arr2[10] = { 5, 4, 3, 2, 1, 9, 8, 7, 6, 0 };
+    int arr2[10] = {5, 4, 3, 2, 1, 9, 8, 7, 6, 0};
     length = sizeof(arr2) / sizeof(arr2[0]);
     printf("排序前：\n");
     print_int_array(arr2, length);
     printf("排序后：\n");
     selection_sort(arr2, length);
     print_int_array(arr2, length);
-    
+
 #endif
 
 #ifdef TEST_FUNCTION
@@ -159,7 +158,7 @@ void test_tools()
     print_horizontal_line(20);
 
     printf("外部函数调用测试\n");
-    char str[20] = { '\0' };
+    char str[20] = {'\0'};
 
     Input(str);
     DelChar(str, ' ');
@@ -185,14 +184,13 @@ void test_tools()
     print_list(head);
     insert_node_pointer_length(head, 3, 47);
     print_list(head);
-    printf("查找第三位数据:%d\n",find_node_pointer_length(head, 3)->data);
-    printf("查找末尾位数据:%d\n",find_node_pointer_length(head, get_length(head))->data);
-    printf("查找数据:%d\n",find_node_pointer_value(head, 2)->data);
+    printf("查找第三位数据:%d\n", find_node_pointer_length(head, 3)->data);
+    printf("查找末尾位数据:%d\n", find_node_pointer_length(head, get_length(head))->data);
+    printf("查找数据:%d\n", find_node_pointer_value(head, 2)->data);
 
     free_nodes(head);
     print_list(head);
 #endif
-
 }
 
 int main()
