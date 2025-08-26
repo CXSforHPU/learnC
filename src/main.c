@@ -176,7 +176,20 @@ void test_tools()
     head_insect(head, 1);
     head_insect(head, 2);
     head_insect(head, 3);
+    tail_insect(head, 4);
+    print_list(head);
+    int length_node = get_length(head);
+    insert_node_pointer_length(head, length_node, 45);
+    print_list(head);
+    insert_node_pointer_length(head, 1, 46);
+    print_list(head);
+    insert_node_pointer_length(head, 3, 47);
+    print_list(head);
+    printf("查找第三位数据:%d\n",find_node_pointer_length(head, 3)->data);
+    printf("查找末尾位数据:%d\n",find_node_pointer_length(head, get_length(head))->data);
+    printf("查找数据:%d\n",find_node_pointer_value(head, 2)->data);
 
+    free_nodes(head);
     print_list(head);
 #endif
 

@@ -140,7 +140,7 @@ node_pointer find_node_pointer_length(head_pointer h,int length)
     int max_length = get_length(h);
 
     /* 检查长度是否在有效范围内 */
-    if (length < 1 || length > max_length)
+    if (length < 0 || length > max_length)
     {
         return NULL;
     }
@@ -292,6 +292,9 @@ my_bool free_nodes(head_pointer h)
         free(p);
         p = q;
     }
+
+    /* 需要设置NULL */
+    h->next = NULL;
     return TRUE;
 }
 
