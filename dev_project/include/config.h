@@ -1,3 +1,37 @@
-/* contory test example */
-#define LEARN_LINK
+#ifndef CONFIG_H
+#define CONFIG_H
 
+/* 宏控制编译示例 */
+#define SORT_FUCTION
+// #define SUM_EXAMPLE
+// #define COMPARE_EXAMPLE
+// #define USE_SCANF_EXAMPLE
+// #define FACTORIAL_EXAMPLE
+// #define GET_VALUE_EXAMPLE
+// #define IS_PRIME_EXAMPLE
+// #define FAHRENHEIT_TO_CELSIUS_EXAMPLE
+// #define TEST_ESCAPE_CHARACTERS_EXAMPLE
+// #define TEST_UPPER_TO_LOWER_EXAMPLE
+// #define TRIANGLE_AREA_EXAMPLE
+// #define TEST_INPUT_OUTPUT_EXAMPLE
+// #define TEST_SOLVE_QUADRATIC_EQUATION_EXAMPLE
+// #define TEST_SWAP_INT_EXAMPLE
+// #define USE_SWITCH_CASE_EXAMPLE
+// #define IS_LEAP_YEAR_EXAMPLE
+// #define FIBONACCI_SEQUENCE
+// #define TEST_ARRAY
+// #define TEST_FUNCTION
+#define LEARN_POINTER
+#define LEARN_DS
+
+// 头文件控制
+
+#define USE_MATH_H
+#define USE_STDIO_H
+#define USE_STDLIB_H
+#define USE_STRING_H
+#define USE_WINDOWS_H
+#define USE_MY_TYPE_H
+#define USE_STDARG_H
+
+#endif // CONFIG_H
