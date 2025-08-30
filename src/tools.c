@@ -714,6 +714,69 @@ void modify_data()
 
 }
 
+void pointer_test()
+{
+    print_horizontal_line(20);
+    printf("指针测试\n");
+    int arr[5] = {1, 2, 3, 4, 5};
+    int *p = arr;
 
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%p ====> %p \n",p+i,&arr[i]);
+        printf("%d ====> %d \n",*(p+i),arr[i]);
+    }
+    
+    print_horizontal_line(20);
+    printf("指针运算\n");
+
+    int *p1 = &arr[0];
+    int *p2 = &arr[4];
+
+    printf("俩指针相差:\tp2-p1=%d\n",p2-p1);
+}
+
+/**
+ * 反转数组中的元素顺序
+ * 
+ * @param array 指向整型数组的指针
+ * @param length 数组的长度
+ * 
+ * 该函数通过双指针法从数组两端向中间交换元素，实现数组的原地反转。
+ * 使用LENGTH2INDEX宏将数组长度转换为索引值，通过swap_int函数交换元素。
+ */
+void reverse_array(int *array, int length)
+{
+    // 初始化双指针，start指向数组开始，end指向数组结束
+    int *start = array;
+    int *end = array + LENGTH2INDEX(length);
+    
+    // 当start指针小于end指针时，继续交换元素
+    while (start < end)
+    {
+        // 交换start和end位置的元素
+        swap_int(start, end);
+        // 移动指针向中间靠拢
+        start++;
+        end--;
+    }
+}
+
+
+void print_addreess_two_array()
+{
+/*
+    1. a[0],a[1],a[2]的类型为int*(指向整型变量)
+    2. a的类型为int (*)[4],指向含有四个元素的一维数组
+*/
+    int a[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    printf("%d,%d\n",a,*a);         //0行的首地址和0行0列元素地址
+    printf("%d,%d\n",a[0],*(a+0));  //0行0列元素地址
+    printf("%d,%d\n",&a[0],&a[0][0]);//0行首地址和0行0列元素地址
+    printf("%d,%d\n",a[1],a+1);     //1行0列元素地址和1行首地址
+    printf("%d,%d\n",&a[1][0],*(a+1)+0);    //1行0列元素地址
+    printf("%d,%d\n",a[2],*(a+2));      //2行0列元素地值
+    printf("%d,%d\n",&a[2],a+2);        //2行首地址
+}
 #endif
 

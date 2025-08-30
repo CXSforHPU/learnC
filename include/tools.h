@@ -130,4 +130,7 @@ void hanoi(int n, char from, char aux, char to);
 
 #ifdef LEARN_POINTER
 void modify_data();
+void pointer_test();
+void reverse_array(int *array, int length);
+void print_addreess_two_array();
 #endif

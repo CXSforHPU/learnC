@@ -4,6 +4,32 @@
 extern void Input();
 extern void DelChar(char arr[], char ch);
 
+void learn_ds()
+{
+    ;
+#ifdef LEARN_DS
+    print_horizontal_line(20);
+    head_pointer head = init_list();
+    head_insect(head, 1);
+    head_insect(head, 2);
+    head_insect(head, 3);
+    tail_insect(head, 4);
+    print_list(head);
+    int length_node = get_length(head);
+    insert_node_pointer_length(head, length_node, 45);
+    print_list(head);
+    insert_node_pointer_length(head, 1, 46);
+    print_list(head);
+    insert_node_pointer_length(head, 3, 47);
+    print_list(head);
+    printf("查找第三位数据:%d\n", find_node_pointer_length(head, 3)->data);
+    printf("查找末尾位数据:%d\n", find_node_pointer_length(head, get_length(head))->data);
+    printf("查找数据:%d\n", find_node_pointer_value(head, 2)->data);
+
+    free_nodes(head);
+    print_list(head);
+#endif
+}
 void test_tools()
 {
 #ifdef _WIN32
@@ -166,37 +192,28 @@ void test_tools()
 #endif
 
 #ifdef LEARN_POINTER
+    int arr_pointer[10] = {1,2,3,4,5,6,7,8,9,10};
+    int length_arr = sizeof(arr_pointer) / sizeof(arr_pointer[0]);
     modify_data();
-#endif
+    pointer_test();
 
-#ifdef LEARN_DS
     print_horizontal_line(20);
-    head_pointer head = init_list();
-    head_insect(head, 1);
-    head_insect(head, 2);
-    head_insect(head, 3);
-    tail_insect(head, 4);
-    print_list(head);
-    int length_node = get_length(head);
-    insert_node_pointer_length(head, length_node, 45);
-    print_list(head);
-    insert_node_pointer_length(head, 1, 46);
-    print_list(head);
-    insert_node_pointer_length(head, 3, 47);
-    print_list(head);
-    printf("查找第三位数据:%d\n", find_node_pointer_length(head, 3)->data);
-    printf("查找末尾位数据:%d\n", find_node_pointer_length(head, get_length(head))->data);
-    printf("查找数据:%d\n", find_node_pointer_value(head, 2)->data);
-
-    free_nodes(head);
-    print_list(head);
+    printf("数组逆置测试\n");
+    printf("反转前数组为:\n");
+    print_int_array(arr_pointer, length_arr);
+    reverse_array(arr_pointer, length_arr);
+    printf("反转后数组为:\n");
+    print_int_array(arr_pointer, length_arr);
+    print_horizontal_line(20);
+    print_addreess_two_array();
 #endif
+
 }
 
 int main()
 {
     test_tools();
-
+    learn_ds();
     system("pause");
     return 0;
 }

@@ -40,6 +40,7 @@ my_bool expend_length_table(Table_pointer table_pointer)
 
     return TRUE;
 }
+
 /**
  * @brief 初始化顺序表
  * @return 返回指向新创建顺序表的指针
