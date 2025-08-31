@@ -763,20 +763,94 @@ void reverse_array(int *array, int length)
 }
 
 
+/*
+ * 函数: print_addreess_two_array
+ * 功能: 打印二维数组中不同元素和行的地址，用于理解二维数组的内存布局和指针关系
+ * 参数: 无
+ * 返回值: 无
+ */
 void print_addreess_two_array()
 {
-/*
-    1. a[0],a[1],a[2]的类型为int*(指向整型变量)
-    2. a的类型为int (*)[4],指向含有四个元素的一维数组
-*/
+    /*
+     * 1. a[0],a[1],a[2]的类型为int*(指向整型变量)
+     * 2. a的类型为int (*)[4],指向含有四个元素的一维数组
+     */
     int a[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
-    printf("%d,%d\n",a,*a);         //0行的首地址和0行0列元素地址
-    printf("%d,%d\n",a[0],*(a+0));  //0行0列元素地址
-    printf("%d,%d\n",&a[0],&a[0][0]);//0行首地址和0行0列元素地址
-    printf("%d,%d\n",a[1],a+1);     //1行0列元素地址和1行首地址
-    printf("%d,%d\n",&a[1][0],*(a+1)+0);    //1行0列元素地址
-    printf("%d,%d\n",a[2],*(a+2));      //2行0列元素地值
-    printf("%d,%d\n",&a[2],a+2);        //2行首地址
+
+    // 打印第0行的首地址和第0行第0列元素的地址
+    printf("%d,%d\n",a,*a);         
+
+    // 打印第0行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",a[0],*(a+0));  
+
+    // 打印第0行的首地址和第0行第0列元素的地址
+    printf("%d,%d\n",&a[0],&a[0][0]);
+
+    // 打印第1行第0列元素的地址和第1行的首地址
+    printf("%d,%d\n",a[1],a+1);     
+
+    // 打印第1行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",&a[1][0],*(a+1)+0);    
+
+    // 打印第2行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",a[2],*(a+2));      
+
+    // 打印第2行的首地址（两种不同写法）
+    printf("%d,%d\n",&a[2],a+2);        
 }
+
+/**
+ * 打印二维数组的内容
+ * @param arr 指向二维数组的指针
+ * @param row 二维数组的行数
+ * @param col 二维数组的列数
+ */
+void print_two_array(int *arr ,int row, int col)
+{
+    // 外层循环遍历每一行
+    for (int i = 0; i < row; i++)
+    {
+        // 内层循环遍历当前行的每一列
+        for (int j = 0; j < col; j++)
+        {
+            // printf("%d\t",*(arr+i*col+j));
+            printf("%d\t",arr[i*col+j]);
+        }
+        // 每行打印完成后换行
+        printf("\n");
+    }
+
+}
+
+void char_test()
+{
+    char *str = "hello world";
+    printf("%s\n",str);
+}
+
+/**
+ * @brief 将源字符串复制到目标字符串
+ * 
+ * @param dest 指向目标字符串的指针
+ * @param src  指向源字符串的指针
+ * 
+ * @note 该函数会将src指向的字符串（包括结束符'\0'）复制到dest指向的位置，
+ *       调用者需要确保dest指向的内存空间足够大以容纳src指向的整个字符串。
+ */
+void copy_string(char *from, char *to)
+{
+    // 复制源字符串的每个字符到目标字符串，直到遇到字符串结束符
+    while (*from != '\0')
+    {
+        *to = *from;
+        from++;
+        to++; 
+    }
+    // 在目标字符串末尾添加结束符
+    *to = '\0';
+    
+}
+
+
 #endif
 

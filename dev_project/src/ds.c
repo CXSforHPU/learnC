@@ -40,6 +40,7 @@ my_bool expend_length_table(Table_pointer table_pointer)
 
     return TRUE;
 }
+
 /**
  * @brief 初始化顺序表
  * @return 返回指向新创建顺序表的指针
@@ -390,10 +391,10 @@ my_bool delete_node_pointer_value(head_pointer h, int value)
     node_pointer p = h;
 
     /* 遍历链表查找要删除的节点 */
-    while (p->next->next != NULL)
+    while (p->next != NULL)
     {
         /* 检查下一个节点的下一个节点是否为目标值 */
-        if (p->next->next->data == value)
+        if (p->next->data == value)
         {
             /* 找到目标节点，执行删除操作 */
             q = p->next;

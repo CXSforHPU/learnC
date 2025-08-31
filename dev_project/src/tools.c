@@ -714,6 +714,143 @@ void modify_data()
 
 }
 
+void pointer_test()
+{
+    print_horizontal_line(20);
+    printf("指针测试\n");
+    int arr[5] = {1, 2, 3, 4, 5};
+    int *p = arr;
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%p ====> %p \n",p+i,&arr[i]);
+        printf("%d ====> %d \n",*(p+i),arr[i]);
+    }
+    
+    print_horizontal_line(20);
+    printf("指针运算\n");
+
+    int *p1 = &arr[0];
+    int *p2 = &arr[4];
+
+    printf("俩指针相差:\tp2-p1=%d\n",p2-p1);
+}
+
+/**
+ * 反转数组中的元素顺序
+ * 
+ * @param array 指向整型数组的指针
+ * @param length 数组的长度
+ * 
+ * 该函数通过双指针法从数组两端向中间交换元素，实现数组的原地反转。
+ * 使用LENGTH2INDEX宏将数组长度转换为索引值，通过swap_int函数交换元素。
+ */
+void reverse_array(int *array, int length)
+{
+    // 初始化双指针，start指向数组开始，end指向数组结束
+    int *start = array;
+    int *end = array + LENGTH2INDEX(length);
+    
+    // 当start指针小于end指针时，继续交换元素
+    while (start < end)
+    {
+        // 交换start和end位置的元素
+        swap_int(start, end);
+        // 移动指针向中间靠拢
+        start++;
+        end--;
+    }
+}
+
+
+/*
+ * 函数: print_addreess_two_array
+ * 功能: 打印二维数组中不同元素和行的地址，用于理解二维数组的内存布局和指针关系
+ * 参数: 无
+ * 返回值: 无
+ */
+void print_addreess_two_array()
+{
+    /*
+     * 1. a[0],a[1],a[2]的类型为int*(指向整型变量)
+     * 2. a的类型为int (*)[4],指向含有四个元素的一维数组
+     */
+    int a[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
+
+    // 打印第0行的首地址和第0行第0列元素的地址
+    printf("%d,%d\n",a,*a);         
+
+    // 打印第0行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",a[0],*(a+0));  
+
+    // 打印第0行的首地址和第0行第0列元素的地址
+    printf("%d,%d\n",&a[0],&a[0][0]);
+
+    // 打印第1行第0列元素的地址和第1行的首地址
+    printf("%d,%d\n",a[1],a+1);     
+
+    // 打印第1行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",&a[1][0],*(a+1)+0);    
+
+    // 打印第2行第0列元素的地址（两种不同写法）
+    printf("%d,%d\n",a[2],*(a+2));      
+
+    // 打印第2行的首地址（两种不同写法）
+    printf("%d,%d\n",&a[2],a+2);        
+}
+
+/**
+ * 打印二维数组的内容
+ * @param arr 指向二维数组的指针
+ * @param row 二维数组的行数
+ * @param col 二维数组的列数
+ */
+void print_two_array(int *arr ,int row, int col)
+{
+    // 外层循环遍历每一行
+    for (int i = 0; i < row; i++)
+    {
+        // 内层循环遍历当前行的每一列
+        for (int j = 0; j < col; j++)
+        {
+            // printf("%d\t",*(arr+i*col+j));
+            printf("%d\t",arr[i*col+j]);
+        }
+        // 每行打印完成后换行
+        printf("\n");
+    }
+
+}
+
+void char_test()
+{
+    char *str = "hello world";
+    printf("%s\n",str);
+}
+
+/**
+ * @brief 将源字符串复制到目标字符串
+ * 
+ * @param dest 指向目标字符串的指针
+ * @param src  指向源字符串的指针
+ * 
+ * @note 该函数会将src指向的字符串（包括结束符'\0'）复制到dest指向的位置，
+ *       调用者需要确保dest指向的内存空间足够大以容纳src指向的整个字符串。
+ */
+void copy_str(char *dest, char *src)
+{
+    // 复制源字符串的每个字符到目标字符串，直到遇到字符串结束符
+    while (*src != '\0')
+    {
+        *dest = *src;
+        src++;
+        dest++; 
+    }
+    // 在目标字符串末尾添加结束符
+    *dest = '\0';
+    
+}
+
 
 #endif
 
