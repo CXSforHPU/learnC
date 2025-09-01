@@ -215,9 +215,13 @@ void test_tools()
     char str1[20] = "hello world";
     char str2[20] = { 0 };
 
-    copy_str(str1, str2);
+    copy_string(str1, str2);
     printf("str1 = %s\n", str1);
     printf("str2 = %s\n", str2);
+
+    print_horizontal_line(20);
+    printf("函数指针测试\n");
+    test_func_pointer();
 #endif
 
 }
@@ -225,6 +229,8 @@ void test_tools()
 int main()
 {
     test_tools();
+    print_horizontal_line(20);
+    printf("数据结构测试\n");
     learn_ds();
     system("pause");
     return 0;

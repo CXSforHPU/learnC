@@ -848,9 +848,22 @@ void copy_string(char *from, char *to)
     }
     // 在目标字符串末尾添加结束符
     *to = '\0';
-    
 }
 
+static int add(int a, int b)
+{
+    return a + b;
+}
+
+int test_func_pointer()
+{
+    int (*pAdd)(int a, int b) = add; //函数名就是函数地址
+    int sum1 = (*pAdd)(1,2);
+    int sum2 = pAdd(1,2);
+
+    printf("sum1 : %d\tsum2 : %d\n",sum1,sum2);
+
+}
 
 #endif
 
