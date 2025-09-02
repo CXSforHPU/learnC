@@ -37,7 +37,7 @@ node_pointer find_node_pointer_length(head_pointer h, int length);
 node_pointer find_node_pointer_value(head_pointer h, int value);
 void print_list(head_pointer h);
 my_bool delete_node_pointer_length(head_pointer h, int length);
-my_bool delete_node_pointer_value(head_pointer h, int value);
+my_bool delete_node_pointer_value(head_pointer h, int value); 
 my_bool insert_node_pointer_length(head_pointer h, int length, int data);
 my_bool free_nodes(head_pointer h);
 my_bool destroy_list(head_pointer h);

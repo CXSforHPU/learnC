@@ -1,8 +1,39 @@
 #include "tools.h"
 #include "ds.h"
+#include "alg.h"
 
 extern void Input();
 extern void DelChar(char arr[], char ch);
+
+
+void learn_alg()
+{
+    ;
+#ifdef LEARN_ALG
+    print_horizontal_line(20);
+    printf("左移3个数据\n");
+    int arr_left_move[10] = {1,2,3,4,5,6,7,8,9,10};
+    int length_left_move = sizeof(arr_left_move) / sizeof(arr_left_move[0]);
+    print_int_array(arr_left_move, length_left_move);
+    left_move(arr_left_move, length_left_move, 2);
+    print_int_array(arr_left_move, length_left_move);
+
+    print_horizontal_line(20);
+    printf("取两个数组的中位数\n");
+
+    int arr1[10] = {1,2,3,4,5,6,7,8,9,10};
+    int length1 = sizeof(arr1) / sizeof(arr1[0]);
+    int arr2[10] = {4,5,6,7,8,9,10,11,12,13};
+    int length2 = sizeof(arr2) / sizeof(arr2[0]);
+    
+    print_int_array(arr1, length1);
+    print_int_array(arr2, length2);
+    printf("%d\n",get_two_arr_middle_number(arr1,arr2,length1,length2));
+#endif
+}
+
+
+
 
 void learn_ds()
 {
@@ -232,6 +263,11 @@ int main()
     print_horizontal_line(20);
     printf("数据结构测试\n");
     learn_ds();
+
+    print_horizontal_line(20);
+    learn_alg();
+
+
     system("pause");
     return 0;
 }
