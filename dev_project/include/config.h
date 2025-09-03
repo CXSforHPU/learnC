@@ -24,6 +24,10 @@
 #define LEARN_POINTER
 #define LEARN_DS
 
+//
+#define TEST_LEFT_MOVE
+#define LEARN_ALG
+
 // 头文件控制
 
 #define USE_MATH_H

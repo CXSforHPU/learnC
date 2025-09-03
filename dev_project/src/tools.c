@@ -837,20 +837,33 @@ void char_test()
  * @note 该函数会将src指向的字符串（包括结束符'\0'）复制到dest指向的位置，
  *       调用者需要确保dest指向的内存空间足够大以容纳src指向的整个字符串。
  */
-void copy_str(char *dest, char *src)
+void copy_string(char *from, char *to)
 {
     // 复制源字符串的每个字符到目标字符串，直到遇到字符串结束符
-    while (*src != '\0')
+    while (*from != '\0')
     {
-        *dest = *src;
-        src++;
-        dest++; 
+        *to = *from;
+        from++;
+        to++; 
     }
     // 在目标字符串末尾添加结束符
-    *dest = '\0';
-    
+    *to = '\0';
 }
 
+static int add(int a, int b)
+{
+    return a + b;
+}
+
+int test_func_pointer()
+{
+    int (*pAdd)(int a, int b) = add; //函数名就是函数地址
+    int sum1 = (*pAdd)(1,2);
+    int sum2 = pAdd(1,2);
+
+    printf("sum1 : %d\tsum2 : %d\n",sum1,sum2);
+
+}
 
 #endif
 

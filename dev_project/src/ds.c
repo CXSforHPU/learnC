@@ -3,26 +3,26 @@
 
 #define MAX_TABLE_SIZE 10
 #define TABLE_EXPEND_TIMES 2
-/* Ë³Ðò±í */
+/* Ë³ï¿½ï¿½ï¿½ */
 
 /**
- * @brief À©Õ¹±íµÄ³¤¶È£¬½«±íµÄÈÝÁ¿À©´óTABLE_EXPEND_TIMES±¶
- * @param table_pointer - Ö¸Ïò±í½á¹¹ÌåµÄÖ¸Õë
- * @return À©Õ¹³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TABLE_EXPEND_TIMESï¿½ï¿½
+ * @param p_sqList - Ö¸ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ * @return ï¿½ï¿½Õ¹ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool expend_length_table(Table_pointer table_pointer)
+my_bool expend_length_sqList(P_sqList p_sqList)
 {
-    if (table_pointer == NULL)
+    if (p_sqList == NULL)
     {
-        printf("table_pointer is NULL!\n");
+        printf("p_sqList is NULL!\n");
         return FALSE;
     }
 
-    int old_size = table_pointer->size;
+    int old_size = p_sqList->size;
     int new_size = (old_size)*TABLE_EXPEND_TIMES;
 
-    /* ÖØÐÂ·ÖÅäÄÚ´æ¿Õ¼ä£¬½«ÈÝÁ¿À©Õ¹TABLE_EXPEND_TIMES±¶ */
-    int *new_head = (int *)realloc(table_pointer->head, new_size * sizeof(int));
+    /* ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Õ¼ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹TABLE_EXPEND_TIMESï¿½ï¿½ */
+    int *new_head = (int *)realloc(p_sqList->head, new_size * sizeof(int));
 
     if (new_head == NULL)
     {
@@ -30,172 +30,172 @@ my_bool expend_length_table(Table_pointer table_pointer)
         return FALSE;
     }
 
-    /* ½«ÐÂ·ÖÅäµÄÄÚ´æ¿Õ¼ä³õÊ¼»¯Îª0 */
+    /* ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Õ¼ï¿½ï¿½Ê¼ï¿½ï¿½Îª0 */
     memset(new_head + old_size, 0, (new_size - old_size) * sizeof(int));
 
-    /* ¸üÐÂ±íµÄ´óÐ¡ÐÅÏ¢ */
+    /* ï¿½ï¿½ï¿½Â±ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½Ï¢ */
 
-    table_pointer->head = new_head;
-    table_pointer->size = new_size;
+    p_sqList->head = new_head;
+    p_sqList->size = new_size;
 
     return TRUE;
 }
 
 /**
- * @brief ³õÊ¼»¯Ë³Ðò±í
- * @return ·µ»ØÖ¸ÏòÐÂ´´½¨Ë³Ðò±íµÄÖ¸Õë
+ * @brief ï¿½ï¿½Ê¼ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
  */
-Table_pointer InitTable()
+P_sqList Init_sqList()
 {
-    /* ·ÖÅäÄÚ´æÒÔ´´½¨ÐÂµÄË³Ðò±í  */
-    Table_pointer table_point = (Table_pointer)malloc(sizeof(Table));
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Âµï¿½Ë³ï¿½ï¿½ï¿½  */
+    P_sqList table_point = (P_sqList)malloc(sizeof(sqList));
 
     table_point->head = (int *)malloc(MAX_TABLE_SIZE * sizeof(int));
     table_point->length = 0;
     table_point->size = MAX_TABLE_SIZE;
 
-    /* ³õÊ¼»¯Êý×éÔªËØÎª0 */
+    /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Îª0 */
     memset(table_point->head, 0, sizeof(table_point->head));
 }
 
 /**
- * @brief ´òÓ¡±í¸ñÄÚÈÝ
- * @param table_pointer Ö¸Ïò±í¸ñ½á¹¹ÌåµÄÖ¸Õë£¬°üº¬Òª´òÓ¡µÄÊý¾Ý
- *                     - head: Ö¸ÏòÊý¾ÝÊý×éµÄÖ¸Õë
- *                     - length: ±í¸ñÖÐÔªËØµÄ¸öÊý
- * @return ÎÞ·µ»ØÖµ
+ * @brief ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param p_sqList Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *                     - head: Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ *                     - length: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ØµÄ¸ï¿½ï¿½ï¿½
+ * @return ï¿½Þ·ï¿½ï¿½ï¿½Öµ
  */
-void PrintTable(Table_pointer table_pointer)
+void Print_sqList(P_sqList p_sqList)
 {
-    /* ±éÀú±í¸ñÖÐµÄËùÓÐÔªËØ²¢´òÓ¡ */
-    for (int i = 0; i < table_pointer->length; i++)
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø²ï¿½ï¿½ï¿½Ó¡ */
+    for (int i = 0; i < p_sqList->length; i++)
     {
-        printf("%d ", table_pointer->head[i]);
+        printf("%d ", p_sqList->head[i]);
     }
-    /* ´òÓ¡Íê³Éºó»»ÐÐ */
+    /* ï¿½ï¿½Ó¡ï¿½ï¿½Éºï¿½ï¿½ï¿½ */
     printf("\n");
 }
 
 /**
- * @brief Ïò±íÖÐÌí¼ÓÔªËØ
- * @param table_pointer ±í½á¹¹ÌåÖ¸Õë£¬°üº¬±íµÄÍ·Ö¸Õë¡¢³¤¶ÈºÍÈÝÁ¿ÐÅÏ¢
- * @param x ÒªÌí¼Óµ½±íÖÐµÄÕûÐÍÔªËØ
- * @return Ìí¼Ó³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+ * @param p_sqList ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ë¡¢ï¿½ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ * @param x Òªï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool add_table(Table_pointer table_pointer, int x)
+my_bool add_sqList(P_sqList p_sqList, int x)
 {
-    /* ¼ì²é±íÊÇ·ñÒÑÂú£¬Èç¹ûÒÑÂúÔò³¢ÊÔÀ©ÈÝ */
-    if (table_pointer->length == table_pointer->size)
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    if (p_sqList->length == p_sqList->size)
     {
-        /* À©ÈÝÊ§°ÜÊ±Êä³ö´íÎóÐÅÏ¢²¢·µ»ØFALSE */
-        if (!expend_length_table(table_pointer))
+        /* ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½FALSE */
+        if (!expend_length_sqList(p_sqList))
         {
             printf("realloc fail!\n");
             return FALSE;
         }
     }
 
-    /* ½«ÐÂÔªËØÌí¼Óµ½±íµÄÄ©Î²²¢¸üÐÂ³¤¶È */
-    table_pointer->head[table_pointer->length] = x;
-    table_pointer->length++;
+    /* ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ä©Î²ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ */
+    p_sqList->head[p_sqList->length] = x;
+    p_sqList->length++;
     return TRUE;
 }
 
 /**
- * @brief ´Ó±íÖÐÉ¾³ýÖ¸¶¨Î»ÖÃµÄÔªËØ
- * @param table_pointer Ö¸Ïò±í½á¹¹µÄÖ¸Õë
- * @param Order ÒªÉ¾³ýÔªËØµÄÎ»ÖÃË÷Òý
- * @return ³É¹¦É¾³ý·µ»ØTRUE£¬Ë÷ÒýÔ½½ç·µ»ØFALSE
+ * @brief ï¿½Ó±ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½Ôªï¿½ï¿½
+ * @param p_sqList Ö¸ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
+ * @param Order ÒªÉ¾ï¿½ï¿½Ôªï¿½Øµï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return ï¿½É¹ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ç·µï¿½ï¿½FALSE
  */
-my_bool remove_Order(Table_pointer table_pointer, int Order)
+my_bool remove_sqList_Order(P_sqList p_sqList, int Order)
 {
-    /* ¼ì²éË÷Òý·¶Î§ */
-    if (Order < 0 || Order >= table_pointer->length)
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ */
+    if (Order < 0 || Order >= p_sqList->length)
     {
         return FALSE;
     }
 
-    /* É¾³ýÔªËØ,ÒÀ´ÎÍùÇ°¸²¸Ç */
+    /* É¾ï¿½ï¿½Ôªï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ */
     int index_start = LENGTH2INDEX(Order);
-    int index_end = LENGTH2INDEX(table_pointer->length);
+    int index_end = LENGTH2INDEX(p_sqList->length);
     for (int i = index_start; i <= index_end; i++)
     {
-        table_pointer->head[i] = table_pointer->head[i + 1];
+        p_sqList->head[i] = p_sqList->head[i + 1];
     }
-    table_pointer->length--;
+    p_sqList->length--;
 
     return TRUE;
 }
 
 /**
- * @brief ÔÚ±íµÄÖ¸¶¨Î»ÖÃ²åÈëÔªËØ
- * @param table_pointer ±í½á¹¹ÌåÖ¸Õë£¬Ö¸ÏòÒª²Ù×÷µÄ±í
- * @param Order ²åÈëÎ»ÖÃµÄÎ»Ðò£¨´Ó1¿ªÊ¼¼ÆÊý£©
- * @param x Òª²åÈëµÄÔªËØÖµ
- * @return ²Ù×÷½á¹û£¬TRUE±íÊ¾³É¹¦£¬FALSE±íÊ¾Ê§°Ü
+ * @brief ï¿½Ú±ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ã²ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+ * @param p_sqList ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½Ö¸ï¿½ë£¬Ö¸ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
+ * @param Order ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½Î»ï¿½ò£¨´ï¿½1ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param x Òªï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Öµ
+ * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê¾ï¿½É¹ï¿½ï¿½ï¿½FALSEï¿½ï¿½Ê¾Ê§ï¿½ï¿½
  */
-my_bool insert_table_order(Table_pointer table_pointer, int Order, int x)
+my_bool insert_sqList_order(P_sqList p_sqList, int Order, int x)
 {
-    /* ¼ì²éË÷Òý·¶Î§ */
-    int length = table_pointer->length + 1;
-    if (length < 0 || length > table_pointer->size)
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ */
+    int length = p_sqList->length + 1;
+    if (length < 0 || length > p_sqList->size)
     {
-        if (!expend_length_table(table_pointer))
+        if (!expend_length_sqList(p_sqList))
         {
             printf("realloc fail!\n");
             return FALSE;
         }
     }
 
-    /* Êý¾ÝÊýÁ¿¼ÓÒ»  */
-    table_pointer->length++;
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»  */
+    p_sqList->length++;
 
-    /* ×ª»»Î»ÐòÎªË÷Òý */
+    /* ×ªï¿½ï¿½Î»ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ */
     int index_end = LENGTH2INDEX(Order);
-    int index_start = LENGTH2INDEX(table_pointer->length);
+    int index_start = LENGTH2INDEX(p_sqList->length);
 
-    /* ÔÚÖ¸¶¨Ë÷ÒýÖ®ºóµÄÔªËØ¶¼ÍùÇ°Å²Ò»Î»  */
+    /* ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ôªï¿½Ø¶ï¿½ï¿½ï¿½Ç°Å²Ò»Î»  */
     for (int i = index_start; i >= index_end; i--)
     {
-        table_pointer->head[i + 1] = table_pointer->head[i];
+        p_sqList->head[i + 1] = p_sqList->head[i];
     }
 
-    /* Ö¸¶¨Ë÷Òý½øÐÐ¸³Öµ¸²¸ÇÔ­ÏÈÊý¾Ý */
-    table_pointer->head[index_end] = x;
+    /* Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½Öµï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    p_sqList->head[index_end] = x;
 }
 
 /**
- * @brief É¾³ý±í½á¹¹¼°Æä¹ØÁªµÄÊý¾Ý
- * @param table_pointer Ö¸ÏòÒªÉ¾³ýµÄ±í½á¹¹µÄÖ¸Õë
- * @return ÎÞ·µ»ØÖµ
+ * @brief É¾ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param p_sqList Ö¸ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ä±ï¿½ï¿½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
+ * @return ï¿½Þ·ï¿½ï¿½ï¿½Öµ
  */
-my_bool delete_table(Table_pointer table_pointer)
+my_bool delete_sqList(P_sqList p_sqList)
 {
-    /* ÊÍ·Å±íÍ·Õ¼ÓÃµÄÄÚ´æ */
-    free(table_pointer->head);
-    /* ÊÍ·Å±í½á¹¹±¾ÉíÕ¼ÓÃµÄÄÚ´æ */
-    free(table_pointer);
+    /* ï¿½Í·Å±ï¿½Í·Õ¼ï¿½Ãµï¿½ï¿½Ú´ï¿½ */
+    free(p_sqList->head);
+    /* ï¿½Í·Å±ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ãµï¿½ï¿½Ú´ï¿½ */
+    free(p_sqList);
 }
 
-/* Á´±í */
+/* ï¿½ï¿½ï¿½ï¿½ */
 
 /**
- * @brief ³õÊ¼»¯Ò»¸öÁ´±í
- * @return Ö¸ÏòÐÂ´´½¨Á´±íÍ·½ÚµãµÄÖ¸Õë£¬Èç¹û´´½¨Ê§°ÜÔò·µ»ØNULL
+ * @brief ï¿½ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return Ö¸ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Úµï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ò·µ»ï¿½NULL
  */
-head_pointer init_list()
+LinkList init_list()
 {
-    /* ·ÖÅäÄÚ´æÒÔ´´½¨ÐÂµÄÍ·½Úµã */
-    head_pointer head = (head_pointer)malloc(sizeof(node));
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Âµï¿½Í·ï¿½Úµï¿½ */
+    LinkList head = (LinkList)malloc(sizeof(LNode));
 
-    /* ¼ì²éÄÚ´æ·ÖÅäÊÇ·ñ³É¹¦ */
+    /* ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¹ï¿½ */
     if (head == NULL)
     {
         printf("creat fail!\n");
         return NULL;
     }
 
-    /* ³õÊ¼»¯Í·½ÚµãµÄÊý¾ÝºÍÖ¸Õë */
+    /* ï¿½ï¿½Ê¼ï¿½ï¿½Í·ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ýºï¿½Ö¸ï¿½ï¿½ */
     head->data = 0;
     head->next = NULL;
 
@@ -203,25 +203,25 @@ head_pointer init_list()
 }
 
 /**
- * @brief ÔÚ´øÍ·½áµãµÄµ¥Á´±íÍ·²¿²åÈëÐÂ½áµã
- * @param h Á´±íµÄÍ·Ö¸Õë
- * @param x Òª²åÈëµÄÊý¾ÝÖµ
- * @return ²Ù×÷³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief ï¿½Ú´ï¿½Í·ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param x Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+ * @return ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool head_insect(head_pointer h, int x)
+my_bool head_insect(LinkList h, int x)
 {
-    /* ´´½¨ÐÂ½áµã */
-    node_pointer q = (node_pointer)malloc(sizeof(node));
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ */
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
 
     if (q == NULL)
     {
         printf("creat fail!\n");
         return FALSE;
     }
-    /* ¸³Öµ */
+    /* ï¿½ï¿½Öµ */
     q->data = x;
 
-    /* Í·²å·¨²åÈë½áµã */
+    /* Í·ï¿½å·¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     q->next = h->next;
     h->next = q;
 
@@ -229,36 +229,36 @@ my_bool head_insect(head_pointer h, int x)
 }
 
 /**
- * @brief ´òÓ¡Á´±íÖÐµÄËùÓÐÔªËØ
- * @param h Á´±íÍ·½ÚµãµÄÖ¸Õë
- * @return ÎÞ·µ»ØÖµ
+ * @brief ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·ï¿½Úµï¿½ï¿½Ö¸ï¿½ï¿½
+ * @return ï¿½Þ·ï¿½ï¿½ï¿½Öµ
  */
-void print_list(head_pointer h)
+void print_list(LinkList h)
 {
-    /* ±éÀúÁ´±í£¬´ÓµÚÒ»¸öÓÐÐ§½Úµã¿ªÊ¼ */
-    node_pointer p = h->next;
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Úµã¿ªÊ¼ */
+    P_LNode p = h->next;
 
-    /* ÒÀ´Î´òÓ¡Ã¿¸ö½ÚµãµÄÊý¾ÝÓò */
+    /* ï¿½ï¿½ï¿½Î´ï¿½Ó¡Ã¿ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (p != NULL)
     {
         printf("%d ", p->data);
         p = p->next;
     }
-    /* ´òÓ¡»»ÐÐ·û£¬Ê¹Êä³ö¸üÇåÎú */
+    /* ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     printf("\n");
 }
 
 /**
- * @brief ¼ÆËãÁ´±íµÄ³¤¶È
- * @param h Á´±íÍ·Ö¸Õë
- * @return Á´±íÖÐ½ÚµãµÄ¸öÊý
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½Ä¸ï¿½ï¿½ï¿½
  */
-int get_length(head_pointer h)
+int get_length(LinkList h)
 {
     int length = 0;
-    node_pointer p = h;
+    P_LNode p = h;
 
-    /* ±éÀúÁ´±íÖ±µ½Ä©Î²£¬Í³¼Æ½ÚµãÊýÁ¿ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ä©Î²ï¿½ï¿½Í³ï¿½Æ½Úµï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (p->next != NULL)
     {
         length++;
@@ -268,26 +268,26 @@ int get_length(head_pointer h)
     return length;
 }
 /**
- * @brief ÔÚÁ´±íÎ²²¿²åÈëÐÂ½Úµã
- * @param h Á´±íÍ·Ö¸Õë
- * @param data Òª²åÈëµÄÊý¾Ý
- * @return ²åÈë³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param data Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool tail_insect(head_pointer h, int data)
+my_bool tail_insect(LinkList h, int data)
 {
-    node_pointer q = (node_pointer)malloc(sizeof(node));
-    node_pointer p = h;
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
+    P_LNode p = h;
     if (q == NULL)
     {
         printf("creat fail!\n");
         return FALSE;
     }
 
-    /* ¸³Öµ */
+    /* ï¿½ï¿½Öµ */
     q->data = data;
     q->next = NULL;
 
-    /* ÕÒµ½×îºóÒ»¸ö½Úµã */
+    /* ï¿½Òµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ */
     while (p->next != NULL)
     {
         p = p->next;
@@ -299,29 +299,29 @@ my_bool tail_insect(head_pointer h, int data)
 }
 
 /**
- * @brief ¸ù¾ÝÖ¸¶¨³¤¶È²éÕÒÁ´±íÖÐµÄ½ÚµãÖ¸Õë
- * @param h Á´±íµÄÍ·Ö¸Õë
- * @param length Òª²éÕÒµÄÎ»ÖÃ³¤¶È£¨´Ó1¿ªÊ¼¼ÆÊý£©
- * @return ·µ»ØµÚlength¸ö½ÚµãµÄÖ¸Õë£¬Èç¹û³¬³ö·¶Î§Ôò·µ»ØNULL
+ * @brief ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ½Úµï¿½Ö¸ï¿½ï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param length Òªï¿½ï¿½ï¿½Òµï¿½Î»ï¿½Ã³ï¿½ï¿½È£ï¿½ï¿½ï¿½1ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½Øµï¿½lengthï¿½ï¿½ï¿½Úµï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ò·µ»ï¿½NULL
  */
-node_pointer find_node_pointer_length(head_pointer h, int length)
+P_LNode find_P_LNode_length(LinkList h, int length)
 {
     int max_length = get_length(h);
 
-    /* ¼ì²é³¤¶ÈÊÇ·ñÔÚÓÐÐ§·¶Î§ÄÚ */
+    /* ï¿½ï¿½é³¤ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Î§ï¿½ï¿½ */
     if (length < 0 || length > max_length)
     {
         return NULL;
     }
-    else if (length == 0) /*·µ»ØÍ·Ö¸Õë*/
+    else if (length == 0) /*ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½*/
     {
         return h;
     }
 
     int i = 1;
-    node_pointer p = h;
+    P_LNode p = h;
 
-    /* ±éÀúÁ´±íÖ±µ½ÕÒµ½Ö¸¶¨Î»ÖÃ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½Òµï¿½Ö¸ï¿½ï¿½Î»ï¿½ï¿½ */
     while (p->next != NULL && i <= length)
     {
         p = p->next;
@@ -332,16 +332,16 @@ node_pointer find_node_pointer_length(head_pointer h, int length)
 }
 
 /**
- * @brief ÔÚÁ´±íÖÐ²éÕÒ¾ßÓÐÖ¸¶¨ÖµµÄ½Úµã
- * @param h Á´±íµÄÍ·Ö¸Õë
- * @param value Òª²éÕÒµÄÖµ
- * @return ÕÒµ½µÄ½ÚµãÖ¸Õë£¬Èç¹ûÎ´ÕÒµ½Ôò·µ»ØNULL
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Ò¾ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Öµï¿½Ä½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param value Òªï¿½ï¿½ï¿½Òµï¿½Öµ
+ * @return ï¿½Òµï¿½ï¿½Ä½Úµï¿½Ö¸ï¿½ë£¬ï¿½ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½ò·µ»ï¿½NULL
  */
-node_pointer find_node_pointer_value(head_pointer h, int value)
+P_LNode find_P_LNode_value(LinkList h, int value)
 {
-    node_pointer p = h;
+    P_LNode p = h;
 
-    /* ±éÀúÁ´±í²éÕÒÄ¿±êÖµ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Öµ */
     while (p->next != NULL)
     {
         if (p->data == value)
@@ -355,23 +355,23 @@ node_pointer find_node_pointer_value(head_pointer h, int value)
 }
 
 /**
- * @brief É¾³ýÁ´±íÖÐÖ¸¶¨Î»ÖÃµÄ½Úµã
- * @param h Á´±íÍ·Ö¸Õë
- * @param length ÒªÉ¾³ý½ÚµãµÄÎ»ÖÃ£¨´Ó1¿ªÊ¼¼ÆÊý£©
- * @return É¾³ý³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ÃµÄ½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param length ÒªÉ¾ï¿½ï¿½ï¿½Úµï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½1ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool delete_node_pointer_length(head_pointer h, int length)
+my_bool delete_P_LNode_length(LinkList h, int length)
 {
-    node_pointer q = NULL;
+    P_LNode q = NULL;
 
-    /* ²éÕÒÒªÉ¾³ý½ÚµãµÄÇ°Ò»¸ö½Úµã */
-    node_pointer p = find_node_pointer_length(h, length - 1);
+    /* ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½Úµï¿½ */
+    P_LNode p = find_P_LNode_length(h, length - 1);
 
     if (p == NULL)
     {
         return FALSE;
     }
-    /* É¾³ý½Úµã */
+    /* É¾ï¿½ï¿½ï¿½Úµï¿½ */
     q = p->next;
     p->next = q->next;
     free(q);
@@ -380,23 +380,23 @@ my_bool delete_node_pointer_length(head_pointer h, int length)
 }
 
 /**
- * @brief ´ÓÁ´±íÖÐÉ¾³ýÖ¸¶¨ÖµµÄ½Úµã
- * @param h Á´±íÍ·½ÚµãÖ¸Õë
- * @param value ÒªÉ¾³ýµÄ½ÚµãÖµ
- * @return TRUE±íÊ¾É¾³ý³É¹¦£¬FALSE±íÊ¾Î´ÕÒµ½¸ÃÖµ
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½Öµï¿½Ä½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·ï¿½Úµï¿½Ö¸ï¿½ï¿½
+ * @param value ÒªÉ¾ï¿½ï¿½ï¿½Ä½Úµï¿½Öµ
+ * @return TRUEï¿½ï¿½Ê¾É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½FALSEï¿½ï¿½Ê¾Î´ï¿½Òµï¿½ï¿½ï¿½Öµ
  */
-my_bool delete_node_pointer_value(head_pointer h, int value)
+my_bool delete_P_LNode_value(LinkList h, int value)
 {
-    node_pointer q = NULL;
-    node_pointer p = h;
+    P_LNode q = NULL;
+    P_LNode p = h;
 
-    /* ±éÀúÁ´±í²éÕÒÒªÉ¾³ýµÄ½Úµã */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ä½Úµï¿½ */
     while (p->next != NULL)
     {
-        /* ¼ì²éÏÂÒ»¸ö½ÚµãµÄÏÂÒ»¸ö½ÚµãÊÇ·ñÎªÄ¿±êÖµ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç·ï¿½ÎªÄ¿ï¿½ï¿½Öµ */
         if (p->next->data == value)
         {
-            /* ÕÒµ½Ä¿±ê½Úµã£¬Ö´ÐÐÉ¾³ý²Ù×÷ */
+            /* ï¿½Òµï¿½Ä¿ï¿½ï¿½Úµã£¬Ö´ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
             q = p->next;
             p->next = q->next;
             free(q);
@@ -409,71 +409,71 @@ my_bool delete_node_pointer_value(head_pointer h, int value)
 }
 
 /**
- * @brief ÔÚÁ´±íµÄÖ¸¶¨Î»ÖÃ²åÈëÐÂ½Úµã
- * @param h Á´±íÍ·Ö¸Õë
- * @param length ²åÈëÎ»ÖÃ£¨´Ó1¿ªÊ¼¼ÆÊý£©
- * @param data Òª²åÈëµÄÊý¾Ý
- * @return ²åÈë³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ã²ï¿½ï¿½ï¿½ï¿½Â½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @param length ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½1ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param data Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê§ï¿½Ü·ï¿½ï¿½ï¿½FALSE
  */
-my_bool insert_node_pointer_length(head_pointer h, int length, int data)
+my_bool insert_P_LNode_length(LinkList h, int length, int data)
 {
-    /* ²éÕÒ²åÈëÎ»ÖÃµÄÇ°Ò»¸ö½Úµã,ÕÒ²»µ½ËµÃ÷ÊäÈëlength²»ºÏÀí */
-    node_pointer p = find_node_pointer_length(h, length - 1);
+    /* ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½Ç°Ò»ï¿½ï¿½ï¿½Úµï¿½,ï¿½Ò²ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lengthï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    P_LNode p = find_P_LNode_length(h, length - 1);
     if (p == NULL)
     {
         return FALSE;
     }
 
-    /* ·ÖÅäÐÂ½ÚµãÄÚ´æ */
-    node_pointer q = (node_pointer)malloc(sizeof(node));
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Â½Úµï¿½ï¿½Ú´ï¿½ */
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
 
     if (q == NULL)
     {
         return FALSE;
     }
 
-    /* ¸³Öµ */
+    /* ï¿½ï¿½Öµ */
     q->data = data;
 
-    /* Ö´ÐÐ²åÈë²Ù×÷ */
-    q->next = p->next; /* ÏÂÒ»¸ö½Úµã»òÕß NULL */
+    /* Ö´ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    q->next = p->next; /* ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ NULL */
     p->next = q;
 
     return TRUE;
 }
 
 /**
- * @brief ÊÍ·ÅÁ´±íÖÐµÄËùÓÐ½Úµã
- * @param h Á´±íÍ·Ö¸Õë
- * @return TRUE - ³É¹¦ÊÍ·ÅËùÓÐ½Úµã
+ * @brief ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @return TRUE - ï¿½É¹ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
  */
-my_bool free_nodes(head_pointer h)
+my_bool free_nodes(LinkList h)
 {
-    node_pointer p = h->next;
+    P_LNode p = h->next;
 
-    /* Ñ­»·ÊÍ·Å½Úµã */
+    /* Ñ­ï¿½ï¿½ï¿½Í·Å½Úµï¿½ */
     while (p != NULL)
     {
-        node_pointer q = p->next;
+        P_LNode q = p->next;
         free(p);
         p = q;
     }
 
-    /* ÐèÒªÉèÖÃNULL */
+    /* ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½NULL */
     h->next = NULL;
     return TRUE;
 }
 
 /**
- * @brief Ïú»ÙÁ´±í
- * @param h Á´±íÍ·Ö¸Õë
- * @return ·µ»ØTRUE±íÊ¾Ïú»Ù³É¹¦
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param h ï¿½ï¿½ï¿½ï¿½Í·Ö¸ï¿½ï¿½
+ * @return ï¿½ï¿½ï¿½ï¿½TRUEï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ù³É¹ï¿½
  */
-my_bool destroy_list(head_pointer h)
+my_bool destroy_list(LinkList h)
 {
-    /* ÊÍ·ÅËùÓÐ½ÚµãÄÚ´æ */
+    /* ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½ï¿½Ú´ï¿½ */
     free_nodes(h);
-    /* ÊÍ·ÅÍ·Ö¸ÕëÄÚ´æ */
+    /* ï¿½Í·ï¿½Í·Ö¸ï¿½ï¿½ï¿½Ú´ï¿½ */
     free(h);
     return TRUE;
 }

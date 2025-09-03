@@ -1,4 +1,4 @@
-#include "list.h"
+#include "LinkList.h"
 
 /* 链表 */
 
@@ -6,10 +6,10 @@
  * @brief 初始化一个链表
  * @return 指向新创建链表头节点的指针，如果创建失败则返回NULL
  */
-head_pointer init_list()
+LinkList init_list()
 {
     /* 分配内存以创建新的头节点 */
-    head_pointer head = (head_pointer)malloc(sizeof(node));
+    LinkList head = (LinkList)malloc(sizeof(LNode));
 
     /* 检查内存分配是否成功 */
     if (head == NULL)
@@ -31,10 +31,10 @@ head_pointer init_list()
  * @param x 要插入的数据值
  * @return 操作成功返回TRUE，失败返回FALSE
  */
-my_bool head_insect(head_pointer h, int x)
+my_bool head_insect(LinkList h, int x)
 {
     /* 创建新结点 */
-    node_pointer q = (node_pointer)malloc(sizeof(node));
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
 
     if (q == NULL)
     {
@@ -56,10 +56,10 @@ my_bool head_insect(head_pointer h, int x)
  * @param h 链表头节点的指针
  * @return 无返回值
  */
-void print_list(head_pointer h)
+void print_list(LinkList h)
 {
     /* 遍历链表，从第一个有效节点开始 */
-    node_pointer p = h->next;
+    P_LNode p = h->next;
 
     /* 依次打印每个节点的数据域 */
     while (p != NULL)
@@ -76,10 +76,10 @@ void print_list(head_pointer h)
  * @param h 链表头指针
  * @return 链表中节点的个数
  */
-int get_length(head_pointer h)
+int get_length(LinkList h)
 {
     int length = 0;
-    node_pointer p = h;
+    P_LNode p = h;
 
     /* 遍历链表直到末尾，统计节点数量 */
     while (p->next != NULL)
@@ -96,10 +96,10 @@ int get_length(head_pointer h)
  * @param data 要插入的数据
  * @return 插入成功返回TRUE，失败返回FALSE
  */
-my_bool tail_insect(head_pointer h, int data)
+my_bool tail_insect(LinkList h, int data)
 {
-    node_pointer q = (node_pointer)malloc(sizeof(node));
-    node_pointer p = h;
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
+    P_LNode p = h;
     if (q == NULL)
     {
         printf("creat fail!\n");
@@ -127,7 +127,7 @@ my_bool tail_insect(head_pointer h, int data)
  * @param length 要查找的位置长度（从1开始计数）
  * @return 返回第length个节点的指针，如果超出范围则返回NULL
  */
-node_pointer find_node_pointer_length(head_pointer h, int length)
+P_LNode find_P_LNode_length(LinkList h, int length)
 {
     int max_length = get_length(h);
 
@@ -142,7 +142,7 @@ node_pointer find_node_pointer_length(head_pointer h, int length)
     }
 
     int i = 1;
-    node_pointer p = h;
+    P_LNode p = h;
 
     /* 遍历链表直到找到指定位置 */
     while (p->next != NULL && i <= length)
@@ -160,9 +160,9 @@ node_pointer find_node_pointer_length(head_pointer h, int length)
  * @param value 要查找的值
  * @return 找到的节点指针，如果未找到则返回NULL
  */
-node_pointer find_node_pointer_value(head_pointer h, int value)
+P_LNode find_P_LNode_value(LinkList h, int value)
 {
-    node_pointer p = h;
+    P_LNode p = h;
 
     /* 遍历链表查找目标值 */
     while (p->next != NULL)
@@ -183,12 +183,12 @@ node_pointer find_node_pointer_value(head_pointer h, int value)
  * @param length 要删除节点的位置（从1开始计数）
  * @return 删除成功返回TRUE，失败返回FALSE
  */
-my_bool delete_node_pointer_length(head_pointer h, int length)
+my_bool delete_P_LNode_length(LinkList h, int length)
 {
-    node_pointer q = NULL;
+    P_LNode q = NULL;
 
     /* 查找要删除节点的前一个节点 */
-    node_pointer p = find_node_pointer_length(h, length - 1);
+    P_LNode p = find_P_LNode_length(h, length - 1);
 
     if (p == NULL)
     {
@@ -208,10 +208,10 @@ my_bool delete_node_pointer_length(head_pointer h, int length)
  * @param value 要删除的节点值
  * @return TRUE表示删除成功，FALSE表示未找到该值
  */
-my_bool delete_node_pointer_value(head_pointer h, int value)
+my_bool delete_P_LNode_value(LinkList h, int value)
 {
-    node_pointer q = NULL;
-    node_pointer p = h;
+    P_LNode q = NULL;
+    P_LNode p = h;
 
     /* 遍历链表查找要删除的节点 */
     while (p->next != NULL)
@@ -238,17 +238,17 @@ my_bool delete_node_pointer_value(head_pointer h, int value)
  * @param data 要插入的数据
  * @return 插入成功返回TRUE，失败返回FALSE
  */
-my_bool insert_node_pointer_length(head_pointer h, int length, int data)
+my_bool insert_P_LNode_length(LinkList h, int length, int data)
 {
     /* 查找插入位置的前一个节点,找不到说明输入length不合理 */
-    node_pointer p = find_node_pointer_length(h, length - 1);
+    P_LNode p = find_P_LNode_length(h, length - 1);
     if (p == NULL)
     {
         return FALSE;
     }
 
     /* 分配新节点内存 */
-    node_pointer q = (node_pointer)malloc(sizeof(node));
+    P_LNode q = (P_LNode)malloc(sizeof(LNode));
 
     if (q == NULL)
     {
@@ -270,14 +270,14 @@ my_bool insert_node_pointer_length(head_pointer h, int length, int data)
  * @param h 链表头指针
  * @return TRUE - 成功释放所有节点
  */
-my_bool free_nodes(head_pointer h)
+my_bool free_nodes(LinkList h)
 {
-    node_pointer p = h->next;
+    P_LNode p = h->next;
 
     /* 循环释放节点 */
     while (p != NULL)
     {
-        node_pointer q = p->next;
+        P_LNode q = p->next;
         free(p);
         p = q;
     }
@@ -292,7 +292,7 @@ my_bool free_nodes(head_pointer h)
  * @param h 链表头指针
  * @return 返回TRUE表示销毁成功
  */
-my_bool destroy_list(head_pointer h)
+my_bool destroy_list(LinkList h)
 {
     /* 释放所有节点内存 */
     free_nodes(h);

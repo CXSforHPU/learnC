@@ -1,14 +1,45 @@
 #include "tools.h"
 #include "ds.h"
+#include "alg.h"
 
 extern void Input();
 extern void DelChar(char arr[], char ch);
+
+
+void learn_alg()
+{
+    ;
+#ifdef LEARN_ALG
+    print_horizontal_line(20);
+    printf("左移3个数据\n");
+    int arr_left_move[10] = {1,2,3,4,5,6,7,8,9,10};
+    int length_left_move = sizeof(arr_left_move) / sizeof(arr_left_move[0]);
+    print_int_array(arr_left_move, length_left_move);
+    left_move(arr_left_move, length_left_move, 2);
+    print_int_array(arr_left_move, length_left_move);
+
+    print_horizontal_line(20);
+    printf("取两个数组的中位数\n");
+
+    int arr1[10] = {1,2,3,4,5,6,7,8,9,10};
+    int length1 = sizeof(arr1) / sizeof(arr1[0]);
+    int arr2[10] = {4,5,6,7,8,9,10,11,12,13};
+    int length2 = sizeof(arr2) / sizeof(arr2[0]);
+    
+    print_int_array(arr1, length1);
+    print_int_array(arr2, length2);
+    printf("%d\n",get_two_arr_middle_number(arr1,arr2,length1,length2));
+#endif
+}
+
+
+
 
 void learn_ds()
 {
     ;
 #ifdef LEARN_DS
-    head_pointer head = init_list();
+    LinkList head = init_list();
 	tail_insect(head,6);
 	tail_insect(head,7);
 	tail_insect(head,10);
@@ -18,9 +49,9 @@ void learn_ds()
 	
 	print_list(head);
 	
-	insert_node_pointer_length(head,5,45);
+	insert_P_LNode_length(head,5,45);
 	print_list(head);
-	delete_node_pointer_value(head,24);
+	delete_P_LNode_value(head,24);
 	print_list(head);
 #endif
 }
@@ -215,9 +246,13 @@ void test_tools()
     char str1[20] = "hello world";
     char str2[20] = { 0 };
 
-    copy_str(str2, str1);
+    copy_string(str1, str2);
     printf("str1 = %s\n", str1);
     printf("str2 = %s\n", str2);
+
+    print_horizontal_line(20);
+    printf("函数指针测试\n");
+    test_func_pointer();
 #endif
 
 }
@@ -225,7 +260,14 @@ void test_tools()
 int main()
 {
     test_tools();
+    print_horizontal_line(20);
+    printf("数据结构测试\n");
     learn_ds();
+
+    print_horizontal_line(20);
+    learn_alg();
+
+
     system("pause");
     return 0;
 }

@@ -4,42 +4,42 @@
 #include "config.h"
 #include "my_type.h"
 
-/* Ë³Ðò±í */
+/* Ë³ï¿½ï¿½ï¿½ */
 typedef struct
 {
-    int *head;  // ¶¨ÒåÒ»¸öÃûÎªheadµÄ³¤¶È²»È·¶¨µÄÊý×é£¬Ò²½Ð¡°¶¯Ì¬Êý×é¡±
-    int length; // ¼ÇÂ¼µ±Ç°Ë³Ðò±íµÄ³¤¶È
-    int size;   // ¼ÇÂ¼Ë³Ðò±íµÄ´æ´¢ÈÝÁ¿
-} Table, *Table_pointer;
+    int *head;  // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Îªheadï¿½Ä³ï¿½ï¿½È²ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬Ò²ï¿½Ð¡ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½é¡±
+    int length; // ï¿½ï¿½Â¼ï¿½ï¿½Ç°Ë³ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½
+    int size;   // ï¿½ï¿½Â¼Ë³ï¿½ï¿½ï¿½ï¿½Ä´æ´¢ï¿½ï¿½ï¿½ï¿½
+} sqList, *P_sqList;
 
-my_bool expend_length_table(Table_pointer table_pointer);
-Table_pointer InitTable();
-void PrintTable(Table_pointer table_pointer);
-my_bool add_table(Table_pointer table_pointer, int x);
-my_bool remove_Order(Table_pointer table_pointer, int Order);
-my_bool insert_table_order(Table_pointer table_pointer, int Order, int x);
-my_bool delete_table(Table_pointer table_pointer);
+my_bool expend_length_sqList(P_sqList p_sqList);
+P_sqList Init_sqList();
+void Print_sqList(P_sqList p_sqList);
+my_bool add_sqList(P_sqList p_sqList, int x);
+my_bool remove_sqList_Order(P_sqList p_sqList, int Order);
+my_bool insert_sqList_order(P_sqList p_sqList, int Order, int x);
+my_bool delete_sqList(P_sqList p_sqList);
 
-/* Á´±í½á¹¹ */
-typedef struct node
+/* ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ */
+typedef struct LNode
 {
     int data;
-    struct node *next;
-} node, *node_pointer;
+    struct LNode *next;
+} LNode, *P_LNode;
 
-typedef node *head_pointer;
+typedef LNode *LinkList;
 
-head_pointer init_list();
-my_bool head_insect(head_pointer h, int x);
-int get_length(head_pointer h);
-my_bool tail_insect(head_pointer h, int data);
-node_pointer find_node_pointer_length(head_pointer h, int length);
-node_pointer find_node_pointer_value(head_pointer h, int value);
-void print_list(head_pointer h);
-my_bool delete_node_pointer_length(head_pointer h, int length);
-my_bool delete_node_pointer_value(head_pointer h, int value);
-my_bool insert_node_pointer_length(head_pointer h, int length, int data);
-my_bool free_nodes(head_pointer h);
-my_bool destroy_list(head_pointer h);
+LinkList init_list();
+my_bool head_insect(LinkList h, int x);
+int get_length(LinkList h);
+my_bool tail_insect(LinkList h, int data);
+P_LNode find_P_LNode_length(LinkList h, int length);
+P_LNode find_P_LNode_value(LinkList h, int value);
+void print_list(LinkList h);
+my_bool delete_P_LNode_length(LinkList h, int length);
+my_bool delete_P_LNode_value(LinkList h, int value);
+my_bool insert_P_LNode_length(LinkList h, int length, int data);
+my_bool free_nodes(LinkList h);
+my_bool destroy_list(LinkList h);
 
 #endif

@@ -135,5 +135,6 @@ void reverse_array(int *array, int length);
 void print_addreess_two_array();
 void print_two_array(int *arr,int row, int col);
 void char_test();
-void copy_str(char *dest, char *src);
+void copy_string(char *from, char *to);
+int test_func_pointer();
 #endif

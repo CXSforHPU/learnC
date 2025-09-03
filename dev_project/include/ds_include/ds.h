@@ -1,9 +1,9 @@
 #ifndef __DS_H__
 #define __DS_H__
 
-/* å¯¼å…¥æ•°æ®ç»“æ„å¤´æ–‡ä»¶ */
+/* µ¼ÈëÊı¾İ½á¹¹Í·ÎÄ¼ş */
 #include "LinkList.h"
 #include "sqList.h"
-#include "DLinkList.h"
+
 
 #endif

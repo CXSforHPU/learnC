@@ -39,7 +39,7 @@ void learn_ds()
 {
     ;
 #ifdef LEARN_DS
-    head_pointer head = init_list();
+    LinkList head = init_list();
 	tail_insect(head,6);
 	tail_insect(head,7);
 	tail_insect(head,10);
@@ -49,9 +49,9 @@ void learn_ds()
 	
 	print_list(head);
 	
-	insert_node_pointer_length(head,5,45);
+	insert_P_LNode_length(head,5,45);
 	print_list(head);
-	delete_node_pointer_value(head,24);
+	delete_P_LNode_value(head,24);
 	print_list(head);
 #endif
 }
