@@ -4,6 +4,7 @@
 /* 导入数据结构头文件 */
 #include "LinkList.h"
 #include "sqList.h"
-
+#include "DLinkList.h"
+#include "CLinkList.h"
 
 #endif

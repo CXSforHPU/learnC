@@ -29,6 +29,17 @@ void learn_alg()
     print_int_array(arr1, length1);
     print_int_array(arr2, length2);
     printf("%d\n",get_two_arr_middle_number(arr1,arr2,length1,length2));
+    
+    /* 循环链表拼接 */
+
+    test_concat_clinklist();
+
+
+    /* 删除链表升序排序的元素  */
+    test_del_clinklist_ascending_order();
+
+    /* 测试进制转换  */
+    test_transform_ten2two();
 #endif
 }
 
@@ -53,6 +64,9 @@ void learn_ds()
 	print_list(head);
 	delete_P_LNode_value(head,24);
 	print_list(head);
+
+    test_LinkQueue();
+
 #endif
 }
 void test_tools()

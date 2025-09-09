@@ -4,11 +4,11 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = src/ds.o src/main.o src/tools.o
-LINKOBJ  = src/ds.o src/main.o src/tools.o
+OBJ      = src/ds_src/CLinkList.o src/ds_src/DLinkList.o src/ds_src/LinkList.o src/ds_src/sqList.o src/alg.o src/ds.o src/main.o src/tools.o
+LINKOBJ  = src/ds_src/CLinkList.o src/ds_src/DLinkList.o src/ds_src/LinkList.o src/ds_src/sqList.o src/alg.o src/ds.o src/main.o src/tools.o
 LIBS     = -L"D:/dev/Dev-Cpp/MinGW64/lib" -L"D:/dev/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
-INCS     = -I"D:/dev/Dev-Cpp/MinGW64/include" -I"D:/dev/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/my_data/studio/dev_project/include" -I"D:/my_data/studio/dev_project/src"
-CXXINCS  = -I"D:/dev/Dev-Cpp/MinGW64/include" -I"D:/dev/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/my_data/studio/dev_project/include" -I"D:/my_data/studio/dev_project/src"
+INCS     = -I"D:/dev/Dev-Cpp/MinGW64/include" -I"D:/dev/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/my_data/studio/dev_project/include/ds_include" -I"D:/my_data/studio/dev_project/src/ds_src"
+CXXINCS  = -I"D:/dev/Dev-Cpp/MinGW64/include" -I"D:/dev/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/my_data/studio/dev_project/include/ds_include" -I"D:/my_data/studio/dev_project/src/ds_src"
 BIN      = learn_ds.exe
 CXXFLAGS = $(CXXINCS) -g3 -std=c99
 CFLAGS   = $(INCS) -g3 -std=c99
@@ -23,6 +23,21 @@ clean: clean-custom
 
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+src/ds_src/CLinkList.o: src/ds_src/CLinkList.c
+	$(CC) -c src/ds_src/CLinkList.c -o src/ds_src/CLinkList.o $(CFLAGS)
+
+src/ds_src/DLinkList.o: src/ds_src/DLinkList.c
+	$(CC) -c src/ds_src/DLinkList.c -o src/ds_src/DLinkList.o $(CFLAGS)
+
+src/ds_src/LinkList.o: src/ds_src/LinkList.c
+	$(CC) -c src/ds_src/LinkList.c -o src/ds_src/LinkList.o $(CFLAGS)
+
+src/ds_src/sqList.o: src/ds_src/sqList.c
+	$(CC) -c src/ds_src/sqList.c -o src/ds_src/sqList.o $(CFLAGS)
+
+src/alg.o: src/alg.c
+	$(CC) -c src/alg.c -o src/alg.o $(CFLAGS)
 
 src/ds.o: src/ds.c
 	$(CC) -c src/ds.c -o src/ds.o $(CFLAGS)

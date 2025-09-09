@@ -5,5 +5,6 @@
 #include "LinkList.h"
 #include "sqList.h"
 #include "DLinkList.h"
+#include "CLinkList.h"
 
 #endif
